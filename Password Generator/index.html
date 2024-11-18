@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Password Generator</title>
+  </head>
+  <body>
+    <h1>Password Generator</h1>
+    <div class="sections">
+      <div class="section0">
+        <h2>Enter the length of your Password</h2>
+        <input type="number" value="12" style="text-align: center;" id="inputBox" min="1" max="99">
+
+      </div>
+      <div class="section1">
+        <h2>Does it contains Uppercase?</h2>
+        <input type="checkbox" name="switch" id="switch1" />
+        <label class="switch" for="switch1"></label>
+      </div>
+      <div class="section2">
+          <h2>Does it contains Lowercase?</h2>
+          <input type="checkbox" name="switch" id="switch2" />
+          <label class="switch" for="switch2"></label>
+        </div>
+        <div class="section3">
+            <h2>Does it contains Number?</h2>
+            <input type="checkbox" name="switch" id="switch3" />
+            <label class="switch" for="switch3"></label>
+        </div>
+        <div class="section4">
+            <h2>Does it contain Symbols?</h2>
+            <input type="checkbox" name="switch" id="switch4" />
+            <label class="switch" for="switch4"></label>
+        </div>
+    </div>
+    <div class="btn-generate">
+        <button onclick="generatePassword(value, containsUppercase, containsLowercase, containsNumber, containsSymbol)" class="button">Generate</button>
+    </div>
+    <div class="result">
+      <p id="result"></p>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

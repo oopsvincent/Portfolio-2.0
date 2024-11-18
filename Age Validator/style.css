@@ -1,0 +1,23 @@
+body{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+}
+
+body > input, body > button{
+    padding: 5px 25px;
+}
+
+#submitButton {
+    color: white;
+    background: blue;
+    border: none;
+    border-radius: 5px;
+    transition: all 0.3sec ease-in-out;
+    &:hover{
+        background: rgb(91, 91, 252);
+    }
+    &:active{
+        background: rgb(135, 135, 255);
+    }
+}
+

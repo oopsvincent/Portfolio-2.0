@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Blog</title>
+    <link rel="stylesheet" href="s.css">
+    <style>
+      body {
+    font-family: 'Poppins', sans-serif;
+    background-color: black;
+    color: linen;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px;
+}
+
+h1 {
+    background: linear-gradient(to right, violet, cyan);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.form-container {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+form input, form textarea, form button {
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+}
+
+form input, form textarea {
+    background-color: linen;
+    color: black;
+}
+
+form button {
+    background: linear-gradient(to right, violet, cyan);
+    color: black;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+form button:hover {
+    background: linear-gradient(to right, cyan, violet);
+}
+
+.blog {
+    background-color: #444;
+    color: linen;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.blog:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.blog img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.blog h2 {
+    margin: 10px 0;
+}
+
+.blog p {
+    text-align: left;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>My Blog</h1>
+        <div class="form-container">
+            <h2>Create a New Blog</h2>
+            <form id="blogForm">
+                <input type="text" id="title" placeholder="Blog Title" required>
+                <input type="url" id="image" placeholder="Image URL" required>
+                <textarea id="content" placeholder="Blog Content" required></textarea>
+                <button type="submit">Add Blog</button>
+            </form>
+        </div>
+        <div class="blogs" id="blogs"></div>
+    </div>
+    <script src="./scripts/navbar.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+    const blogForm = document.getElementById('blogForm');
+    const blogsContainer = document.getElementById('blogs');
+
+    blogForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const title = document.getElementById('title').value;
+        const image = document.getElementById('image').value;
+        const content = document.getElementById('content').value;
+
+        addBlog(title, image, content);
+
+        // Clear the form fields
+        blogForm.reset();
+    });
+
+    function addBlog(title, image, content) {
+        const blogCard = document.createElement('div');
+        blogCard.className = 'blog';
+
+        blogCard.innerHTML = `
+            <img src="${image}" alt="${title}">
+            <h2>${title}</h2>
+            <p>${content}</p>
+        `;
+
+        blogsContainer.appendChild(blogCard);
+    }
+});
+    </script>
+</body>
+</html>

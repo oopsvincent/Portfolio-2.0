@@ -1,0 +1,41 @@
+body {
+    text-align: center;
+    padding: 100px;
+}
+
+form {
+    background-color: hsl(180, 100%, 88%);
+    max-width: 350px;
+    margin: auto;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 5px 5px 20px hwb(0 0% 100% / 0.473);
+}
+
+#textBox{
+    font-size: 2em;
+    text-align: center;
+    border: 2px solid black;
+    border-radius: 5px;
+    width: 100px;
+}
+
+label {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+button {
+    text-align: center;
+    border: 0px solid black;
+    border-radius: 5px;
+    font-size: 1.5em;
+    background-color: hsl(232, 99%, 70%);
+    margin: 20px;
+    padding: 10px 20px;
+}
+
+#result {
+    font-size: 1.5em;
+    font-weight: bold;
+}

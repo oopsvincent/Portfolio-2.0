@@ -1,0 +1,64 @@
+body {
+    background: #422763;
+}
+
+.head{
+  color: white;
+  display: flex;
+  padding: 5px 20px;
+  justify-content: space-between;
+  align-items: center;
+}
+.head button{
+  font-size: 2.7rem;
+  color: white;
+  background: #AA67FF;
+  border: none;
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+  transition: all 0.7s cubic-bezier(0.19, 1, 0.22, 1);
+}
+.head button:active{
+  background: #D8B9FF;
+}
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-area{
+  width: 95%;
+  height: 600px;
+  background: #5902C6;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  overflow: scroll;
+  padding: 10px 0px;
+}
+
+.boxes{
+  width: 45%;
+  height: 150px;
+  background: #D1ACFF;
+  border-radius: 10px;
+  margin: 5px 0px;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  text-overflow: clip;
+}
+.boxes p{
+  width: 90%; /* Set the maximum width */
+  height: 90px;
+  white-space: nowrap; /* Prevent text wrapping */
+  overflow: hidden; /* Hide the overflow text */
+  text-overflow: ellipsis; /* Add the ellipsis */
+}

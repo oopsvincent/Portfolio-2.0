@@ -1,0 +1,179 @@
+@import url('https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&family=Host+Grotesk:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+html{
+    font-family: "Poppins", Verdana, Geneva, Tahoma, sans-serif;
+}
+
+body{
+    text-align: center;
+    font-family: "Poppins";
+}
+h1{
+    font-size: 3.5em;
+    margin: 5px 20px;
+    font-weight: 700;
+}
+.sections {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    margin: 5px 50px;
+    align-items: start;
+    font-weight: 500;
+}
+.switch {
+    background: hsl(0, 0%, 44%);
+    width: 110px;
+    height: 47.5px;
+    position: relative;
+    border-radius: 45px;
+    cursor: pointer;
+    transition: all 0.5s cubic-bezier(0.215, 0.610, 0.355, 1);
+}
+.switch::after{
+    content: '';
+    position: absolute;
+    background-color: hsl(0, 0%, 100%);
+    color: rgb(255, 255, 255);
+    width: 40px;
+    height: 40px;
+    z-index: 100;
+    left: 5px;
+    top: 3.5px;
+    border-radius: 100%;
+    cursor: pointer;
+    transition: all 0.5s cubic-bezier(0.215, 0.610, 0.355, 1);
+}
+
+#switch1,
+#switch2,
+#switch3,
+#switch4 {
+    display: none; /* Hide the checkbox */
+}
+
+#switch1:checked + .switch::after,
+#switch2:checked + .switch::after,
+#switch3:checked + .switch::after,
+#switch4:checked + .switch::after {
+    left: 65px; /* Move the circle to the right when checked */
+}
+
+#switch1:checked + .switch,
+#switch2:checked + .switch,
+#switch3:checked + .switch,
+#switch4:checked + .switch {
+    background: blue;
+}
+
+.section0,
+.section1,
+.section2,
+.section3,
+.section4 {
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.button{
+    font-size: 2.5em;
+    padding: 10px;
+    background: hsl(223, 100%, 59%);
+    border: none;
+    transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+    font-weight: 600;
+    color: white;
+    border-radius: 5px;
+    font-family: "Afacad Flux", serif;
+}
+
+.button:hover{
+    font-family: "Afacad Flux", serif;
+    background: white;
+    border: 1px solid hsl(223, 100%, 59%);
+    border-radius: 15px;
+    color: hsl(223, 100%, 59%);
+}
+
+/* .button::after{
+    content: '';
+    width: 50px;
+    height: 2px;
+    border-radius: 15px;
+    background: green;
+    position: absolute;
+    transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+} */
+
+
+
+.result {
+    background: linear-gradient(to right, rgb(88, 0, 0), rgb(0, 0, 92));
+    width: 70%;
+    height: auto;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    border-radius: 12px;
+    color: white;
+    font-size: 2.5rem;
+    padding: 15px 50px;
+    font-family: "Afacad Flux", serif;
+    font-weight: bolder;
+    margin: 20px auto;
+}
+
+.section0 input{
+    width: 100px;
+    height: 40px;
+    border-radius: 20px;
+    border: none;
+    background: hsl(0, 0%, 44%);
+    color: white;
+    font-size: 2em;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.btn-generate {
+    height: 100px;
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 700px) {
+
+    .sections {
+        display: flex;
+        flex-direction: column;
+        /* justify-content: center;
+        align-items: center; */
+        margin: 0px;
+        font-size: .9rem;
+        text-align: left;
+    }
+
+    #switch1:checked + .switch::after,
+#switch2:checked + .switch::after,
+#switch3:checked + .switch::after,
+#switch4:checked + .switch::after {
+    left: 65px; /* Move the circle to the right when checked */
+}
+.section0 h2,
+.section1 h2,
+.section2 h2,
+.section3 h2,
+.section4 h2 {
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+}
+  

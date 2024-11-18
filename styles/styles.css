@@ -1,0 +1,113 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: black;
+    color: linen;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    text-align: center;
+    padding: 20px;
+    background-color: black;
+}
+
+.products-container, .cart-container, .checkout-container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.product {
+    background-color: #444;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.product:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.product img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.product h2 {
+    background: linear-gradient(to right, violet, cyan);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.product .price {
+    color: #ffdd57;
+    font-weight: bold;
+}
+
+.cart-items {
+    list-style-type: none;
+    padding: 0;
+}
+
+.cart-items li {
+    background-color: #444;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 10px;
+}
+
+.cart-total {
+    text-align: right;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+#checkout-form {
+    display: flex;
+    flex-direction: column;
+}
+
+#checkout-form label {
+    margin: 10px 0 5px;
+}
+
+#checkout-form input, #checkout-form select, #checkout-form button {
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    border: none;
+}
+
+#checkout-form button {
+    background-color: #ffdd57;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+#checkout-form button:hover {
+    background-color: #ffc107;
+}
+
+@media (max-width: 768px) {
+    .products-container, .cart-container, .checkout-container {
+        width: 90%;
+    }
+
+    .products-container {
+        display: flex;
+        overflow-x: scroll;
+    }
+
+    .product {
+        flex: 0 0 auto;
+        width: 80%;
+        margin: 10px;
+    }
+}

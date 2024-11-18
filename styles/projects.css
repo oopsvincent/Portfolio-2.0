@@ -1,0 +1,112 @@
+body{
+    background: linen;
+}
+
+.projects-section{
+    display: flex;
+    flex-direction: column;
+    font-weight: 900;
+}
+
+
+h1{
+    font-size: 6rem;
+    margin: 30px 20px;
+}
+
+
+/* .projects-beginner {
+} */
+
+
+.projects-beginner a{
+    color: wheat;
+    text-decoration: none;
+}
+
+.projects-beginner a, .projects-intermediate a, .projects-advanced a {
+    color: rgb(0, 102, 255);
+    text-decoration: none;
+}
+
+
+.section {
+    display: none; /* Default hidden */
+    list-style: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding-left: 40px;
+    transition: all 0.5s ease-in;
+}
+
+.visible {
+    display: flex; /* Visible when .visible is added */
+}
+
+/* .a:hover #beginnerSection{
+    display: flex;
+}
+
+.b:hover #intermediateSection{
+    display: flex;
+}
+
+.c:hover #advancedSection{
+    display: flex;
+} */
+
+
+
+/* .section-increase {
+    height: 200px;
+    width: auto;
+} */
+
+
+ul li{
+    list-style: none;
+    font-family: "Poppins", sans-serif;
+}
+
+.project-selection{
+    font-size: 2.5rem;
+    background: rgb(0, 24, 97);
+    margin: 10px 20px;
+    /* border: 2.5px solid aqua; */
+    box-shadow: 7px 10px violet;
+    border-radius: 12px;
+    padding: 5px 20px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    color: rgb(255, 255, 255);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.project-selection:hover{
+    background: violet;
+    box-shadow: 7px 10px black;
+}
+
+
+.label{
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@media (max-width: 1250px) {
+    .project-selection{
+        font-size: 1.5rem;
+    }
+    main h1{
+        font-size: 4rem;
+        font-weight: 900;
+        letter-spacing: 0.3px;
+    }
+  }
