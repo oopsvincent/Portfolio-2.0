@@ -17,8 +17,8 @@ document.addEventListener("DOMContentLoaded", function() {
                             <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/>
                         </svg>
                     </label>
-                    <a href="./index.html" id="home-link" class="home-link">
-                        <img src="./assets/logo.jpg" alt="logo" width="60px" height="60px">
+                    <a href="../index.html" id="home-link" class="home-link">
+                        <img src="../assets/logo.jpg" alt="logo" width="60px" height="60px">
                     </a>
                     <a href="../projects/index.html">Projects</a>
                     <a href="../about/about.html">About</a>
@@ -26,8 +26,8 @@ document.addEventListener("DOMContentLoaded", function() {
                     <a href="../login/getstarted.html">Get Started</a>
                 </div>
             </nav>
-            <a href="/index.html" id="logo">
-                <img src="./assets/logo.jpg" alt="logo" width="50px" height="50px">
+            <a href="../index.html" id="logo">
+                <img src="../assets/logo.jpg" alt="logo" width="50px" height="50px">
             </a>
         `;
     }

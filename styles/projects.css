@@ -78,14 +78,14 @@ ul li{
 }
 
 .project-selection{
-    font-size: 2.5rem;
+    font-size: 1.5rem;
     background: rgb(0, 24, 97);
     margin: 10px 20px;
     /* border: 2.5px solid aqua; */
     box-shadow: 7px 10px violet;
     border-radius: 12px;
-    padding: 0px 20px;
-    height: 120px;
+    padding: 20px 30px;
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -106,7 +106,7 @@ ul li{
     justify-content: space-between;
 }
 
-@media (max-width: 1250px) {
+@media (max-width: 750px) {
     .project-selection{
         font-size: 1.5rem;
     }
@@ -117,5 +117,13 @@ ul li{
     }
     .project-selection {
         height: auto;
+        text-align: left;
+        font-size: 1rem;
+        padding: 10px;
+    }
+    .section{
+        padding: 10px;
+        margin: 0px;
+        font-size: 1.2rem;
     }
   }
