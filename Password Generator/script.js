@@ -136,3 +136,28 @@ function generatePassword() {
     result.innerHTML = password;
     console.log(password);
 }
+
+
+const myResult = document.getElementById('result');
+const copyButton = document.getElementById('copyButton');
+
+copyButton.addEventListener('click', () => {
+  // Create a temporary text area element
+  const tempTextArea = document.createElement('textarea');
+  tempTextArea.value = myResult.textContent;
+
+  // Add the temporary text area to the DOM
+  document.body.appendChild(tempTextArea);
+
+  // Select the text in the text area
+  tempTextArea.select();
+
+  // Copy the selected text to the clipboard
+  document.execCommand('copy');
+
+  // Remove the temporary text area from the DOM
+  document.body.removeChild(tempTextArea);
+
+  // Optionally, display a message to indicate successful copy
+  alert('Text copied to clipboard!');
+});

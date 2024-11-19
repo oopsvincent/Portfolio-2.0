@@ -15,22 +15,22 @@
 
       </div>
       <div class="section1">
-        <h2>Does it contains Uppercase?</h2>
+        <h2>Do you want uppercases?</h2>
         <input type="checkbox" name="switch" id="switch1" />
         <label class="switch" for="switch1"></label>
       </div>
       <div class="section2">
-          <h2>Does it contains Lowercase?</h2>
+          <h2>Do you want Lowercases?</h2>
           <input type="checkbox" name="switch" id="switch2" />
           <label class="switch" for="switch2"></label>
         </div>
         <div class="section3">
-            <h2>Does it contains Number?</h2>
+            <h2>Do you want Numbers?</h2>
             <input type="checkbox" name="switch" id="switch3" />
             <label class="switch" for="switch3"></label>
         </div>
         <div class="section4">
-            <h2>Does it contain Symbols?</h2>
+            <h2>Do you want Symbols?</h2>
             <input type="checkbox" name="switch" id="switch4" />
             <label class="switch" for="switch4"></label>
         </div>
@@ -39,6 +39,7 @@
         <button onclick="generatePassword(value, containsUppercase, containsLowercase, containsNumber, containsSymbol)" class="button">Generate</button>
     </div>
     <div class="result">
+        <button id="copyButton">Copy Password</button>
       <p id="result"></p>
     </div>
 

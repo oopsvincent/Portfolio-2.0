@@ -1,0 +1,82 @@
+@-webkit-keyframes rotate-vert-center {
+    0% {
+      -webkit-transform: rotateY(0);
+              transform: rotateY(0);
+    }
+    100% {
+      -webkit-transform: rotateY(360deg);
+              transform: rotateY(360deg);
+    }
+  }
+  @keyframes rotate-vert-center {
+    0% {
+      -webkit-transform: rotateY(0);
+              transform: rotateY(0);
+    }
+    100% {
+      -webkit-transform: rotateY(360deg);
+              transform: rotateY(360deg);
+    }
+  }
+  
+  .rotate-vert-center {
+    z-index: -10;
+	-webkit-animation: rotate-vert-center 1.5s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+	        animation: rotate-vert-center 1.5s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+}
+
+@-webkit-keyframes scale-up-ver-center {
+    0% {
+      -webkit-transform: scaleY(0.4);
+              transform: scaleY(0.4);
+    }
+    100% {
+      -webkit-transform: scaleY(1);
+              transform: scaleY(1);
+    }
+  }
+  @keyframes scale-up-ver-center {
+    0% {
+      -webkit-transform: scaleY(0.4);
+              transform: scaleY(0.4);
+    }
+    100% {
+      -webkit-transform: scaleY(1);
+              transform: scaleY(1);
+    }
+  }
+
+  
+  .scale-up-ver-center {
+	-webkit-animation: scale-up-ver-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+	        animation: scale-up-ver-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+
+@keyframes floating {
+    0% {
+        transform: translateX(0px) translateY(-12px);
+    }
+    25% {
+        transform: translateX(-217px) translateY(-90px);
+    }
+    50% {
+        transform: translateX(-350px) translateY(-406px);
+    }
+    75% {
+        transform: translateX(-150px) translateY(-964px);
+    }
+    100% {
+        transform: translateX(0px) translateY(-94px);
+    }
+}
+
+.balls {
+    background: black;
+    width: 15px;
+    height: 15px;
+    border-radius: 100%;
+    position: absolute;
+    bottom: 50px;
+    right: 20px;
+    animation: floating 5s cubic-bezier(0.390, 0.575, 0.565, 1.000) infinite alternate-reverse both;
+}

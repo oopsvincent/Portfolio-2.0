@@ -21,3 +21,11 @@ body > input, body > button{
     }
 }
 
+@media (max-width: 700px) {
+    input, button{
+        margin: 10px
+    }
+    #submitButton{
+        padding: 5px 150px;
+    }
+}

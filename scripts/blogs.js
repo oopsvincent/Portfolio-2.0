@@ -55,14 +55,14 @@ let aibtn = document.getElementById('ai-blog');
 mybtn.addEventListener("click", ()=>{
   
   blogsContainer.innerHTML = '';
-  Blogscard("My Website", "/logo.jpg", "How I created my Website", "/blog2.html");
-Blogscard("My Website", "/logo.jpg", "How I created my Website", "/blog2.html");
+  Blogscard("My Website", "../assets/logo.jpg", "How I created my Website", "../blogs/blog00001.html");
+Blogscard("My Website", "../assets/logo.jpg", "How I created my Website", "/blog2.html");
 })
 
 
 aibtn.addEventListener("click", ()=>{
   blogsContainer.innerHTML = '';
-  Blogscard("Mastering Time Management", '/pexels-moose-photos-170195-1037993.jpg', "In today's fast-paced world, managing time effectively has become crucial for achieving both personal and professional success.......", '/blog00001.html');
+  Blogscard("Mastering Time Management", '../assets/pexels-moose-photos-170195-1037993.jpg', "In today's fast-paced world, managing time effectively has become crucial for achieving both personal and professional success.......", '../blogs/blog00001.html');
 })
 
 

@@ -27,7 +27,7 @@ button.addEventListener("click", () => {
     const userAge = Number(input.value);  // Move the value retrieval inside the event listener
     
     if (userAge >= 18 && userAge <= 99) {
-        box.innerText = "You are old enough to enter this site.";
+        box.innerHTML = `You are old enough to enter this site. <a href="../index.html">Go Home</a>`;
     } else if (userAge > 99) {  
         box.innerText = "You are too old to enter this site.";
     } else if (userAge == 0) {
@@ -46,7 +46,7 @@ input.addEventListener("keydown", (e) => {
         const userAge = Number(input.value);  // Move the value retrieval inside the event listener
         
         if (userAge >= 18 && userAge <= 99) {
-            box.innerText = "You are old enough to enter this site.";
+            box.innerHTML = `You are old enough to enter this site. <a href="../index.html">Go Home</a>`;
         } else if (userAge > 99) {  
             box.innerText = "You are too old to enter this site.";
         } else if (userAge == 0) {

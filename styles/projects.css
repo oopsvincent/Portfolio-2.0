@@ -3,6 +3,7 @@
 
 body{
     background: linen;
+    user-select: none;
 }
 
 .projects-section{
