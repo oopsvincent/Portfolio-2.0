@@ -129,8 +129,7 @@ h1{
     font-weight: bolder;
     margin: 20px auto;
     position: relative;
-    cursor: crosshair;
-    overflow-x: scroll;
+    cursor: -webkit-grab;
 }
 
 #copyButton{
@@ -147,6 +146,7 @@ h1{
     border: none;
     font-family: "Afacad Flux", sans-serif;
     cursor: cell;
+    transition: all 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
 }
 
 .section0 input{

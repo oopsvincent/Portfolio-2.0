@@ -1,3 +1,4 @@
+
 // let containsUppercase = false;
 // let containsLowercase = false;
 // let containsNumber = false;
@@ -125,39 +126,54 @@ function generatePassword() {
 
     if (allowedChars.length === 0) {
         result.innerHTML = "Please select at least one option!";
+        copyButton.style.cursor = "not-allowed";
+        result.style.cursor = "-webkit-grab";
+        result.style.userSelect = "none";
+        copyButton.removeEventListener("click", () => { return; });
         return;
     }
-
+    
     for (let i = 0; i < passwordLength; i++) {
         let randomIndex = Math.floor(Math.random() * allowedChars.length);
         password += allowedChars[randomIndex];
     }
-
+    
     result.innerHTML = password;
     console.log(password);
+    copyButton.style.cursor = "pointer";
+    result.style.cursor = "crosshair";
+    result.style.userSelect = "auto";
 }
-
 
 const myResult = document.getElementById('result');
 const copyButton = document.getElementById('copyButton');
 
 copyButton.addEventListener('click', () => {
-  // Create a temporary text area element
-  const tempTextArea = document.createElement('textarea');
-  tempTextArea.value = myResult.textContent;
+    // Create a temporary text area element
+    const tempTextArea = document.createElement('textarea');
+    tempTextArea.value = myResult.textContent;
 
-  // Add the temporary text area to the DOM
-  document.body.appendChild(tempTextArea);
+    // Add the temporary text area to the DOM
+    document.body.appendChild(tempTextArea);
 
-  // Select the text in the text area
-  tempTextArea.select();
+    // Select the text in the text area
+    tempTextArea.select();
 
-  // Copy the selected text to the clipboard
-  document.execCommand('copy');
+    // Copy the selected text to the clipboard
+    document.execCommand('copy');
 
-  // Remove the temporary text area from the DOM
-  document.body.removeChild(tempTextArea);
-
-  // Optionally, display a message to indicate successful copy
-  alert('Text copied to clipboard!');
+    // Remove the temporary text area from the DOM
+    document.body.removeChild(tempTextArea);
+    
+    
+    copyButton.innerText = "Copied";
+    copyButton.style.background = "lime";
+    
+    // Optionally, display a message to indicate successful copy
+    setTimeout(() => {
+        copyButton.innerText = "Copy Password";
+        copyButton.style.background = "hsla(0, 0%, 12%, 0.805)";
+    }, 1500);
+    
 });
+
