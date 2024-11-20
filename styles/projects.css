@@ -26,14 +26,23 @@ h1{
 } */
 
 
-.projects-beginner a{
+/* .projects-beginner a{
     color: wheat;
     text-decoration: none;
-}
+} */
 
 .projects-beginner a, .projects-intermediate a, .projects-advanced a {
-    color: rgb(0, 102, 255);
+    color: hsl(216, 100%, 57%);
     text-decoration: none;
+    transition: all 0.2s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+}
+.projects-beginner a:hover, .projects-intermediate a:hover, .projects-advanced a:hover {
+    scale: 190%;
+    background: rgb(0, 38, 152);
+    color: aqua;
+    padding: 3px 20px;
+    border-radius: 25px;
+    margin: 2px 15px;
 }
 
 

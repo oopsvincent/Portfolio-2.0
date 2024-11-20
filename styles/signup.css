@@ -145,3 +145,7 @@ form div.incorrect input{
 #error-message{
   color:#f06272;
 }
+
+#email:invalid{
+    border: 2px solid red;
+}

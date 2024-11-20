@@ -131,6 +131,23 @@ h1{
     position: relative;
     cursor: -webkit-grab;
 }
+#result{
+    overflow-x: scroll;
+    padding: 10px;
+    max-height: fit-content;
+}
+#result::-webkit-scrollbar {
+    width: 10px; /* Set the width of the scrollbar */
+    background-color: #f0f0f0; /* Set the background color of the scrollbar track */
+    visibility: hidden;
+
+  }
+  
+#result::-webkit-scrollbar-thumb {
+    background-color: hsla(0, 0%, 63%, 0.353); /* Set the color of the scrollbar thumb */
+    border-radius: 15px; /* Set the border radius of the scrollbar thumb */
+    cursor: e-resize;
+  }
 
 #copyButton{
     background: hsla(0, 0%, 12%, 0.805);

@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     <a href="../projects/index.html">Projects</a>
                     <a href="../about/about.html">About</a>
                     <a href="../blogs/blogs.html">Blogs</a>
-                    <a href="../login/getstarted.html">Get Started</a>
+                    <a href="../login/signup.html">Get Started</a>
                 </div>
             </nav>
             <a href="../index.html" id="logo">
