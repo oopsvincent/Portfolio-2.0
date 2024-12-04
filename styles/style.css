@@ -4,5 +4,24 @@
 }
 .boxes{
   background: black;
-  animation: 
+  /* animation:  */
 }
+
+#my-element {
+    width: 100px;
+    height: 200px;
+    background: black;
+    animation: my-animation 2s ease-in-out;
+    animation-timeline: scroll(1620px);
+  }
+  
+  @keyframes my-animation {
+    0% {
+      opacity: 0;
+      transform: translateX(220px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }

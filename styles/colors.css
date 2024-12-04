@@ -1,0 +1,83 @@
+:root {
+    /* Primary Colors */
+    --color-black: #000000;
+    --color-white: #ffffff;
+    --color-violet: #ee82ee;
+    --color-aqua: #00ffff;
+    --color-dark-blue: #1b1464;
+  
+    /* Analogous Palette */
+    --analogous-1: #ca82ed;
+    --analogous-2: #ed82ad;
+    --analogous-3: #ee82ee;
+    --analogous-4: #a782ed;
+    --analogous-5: #ed8982;
+    --analogous-6: #edd1ed;
+  
+    /* Monochromatic Palette */
+    --mono-1: #c38bc3;
+    --mono-2: #988698;
+    --mono-3: #ed82ed;
+    --mono-4: #6e526e;
+    --mono-5: #432743;
+    --mono-6: #331533;
+  
+    /* Text Colors */
+    --text-main: var(--color-black);
+    --text-light: var(--color-white);
+    --text-muted: #6e526e; /* Subtle dark from monochromatic */
+    --text-accent: var(--color-violet);
+  
+    /* Background Colors */
+    --bg-main: var(--color-white);
+    --bg-secondary: var(--color-dark-blue);
+    --bg-highlight: var(--color-aqua);
+    --bg-accent: var(--color-violet);
+    --bg-muted: #f4f4f8; /* Light gray for subtle backgrounds */
+  
+    /* Hover Backgrounds */
+    --bg-hover-main: var(--analogous-1);
+    --bg-hover-accent: var(--analogous-3);
+    --bg-hover-link: var(--analogous-4);
+  
+    /* Border Colors */
+    --border-light: #eaeaea;
+    --border-dark: #6e526e;
+    --border-accent: var(--mono-3);
+  
+    /* Button Colors */
+    --btn-primary-bg: var(--color-violet);
+    --btn-primary-text: var(--color-white);
+    --btn-primary-hover-bg: var(--analogous-2);
+  
+    --btn-secondary-bg: var(--color-aqua);
+    --btn-secondary-text: var(--color-black);
+    --btn-secondary-hover-bg: var(--analogous-5);
+  
+    /* Links */
+    --link-color: var(--color-violet);
+    --link-hover-color: var(--color-aqua);
+  
+    /* Headers */
+    --header-main: var(--color-dark-blue);
+    --header-accent: var(--mono-6);
+  
+    /* Footer */
+    --footer-bg: var(--color-dark-blue);
+    --footer-text: var(--color-white);
+  
+    /* Main Page */
+    --main-bg: var(--bg-main);
+    --main-text: var(--text-main);
+  
+    /* Accent Elements */
+    --accent-1: var(--analogous-2);
+    --accent-2: var(--analogous-4);
+    --accent-3: var(--analogous-6);
+  
+    /* Shadows */
+    --shadow-light: rgba(0, 0, 0, 0.05);
+    --shadow-medium: rgba(0, 0, 0, 0.15);
+    --shadow-dark: rgba(0, 0, 0, 0.3);
+  }
+  
