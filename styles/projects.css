@@ -2,6 +2,10 @@
 
 @import 'colors.css';
 
+html{
+    cursor: url("../mouse.png"), auto;
+}
+
 body{
     background: var(--bg-main);
     user-select: none;
@@ -45,6 +49,7 @@ h1{
     padding: 3px 20px;
     border-radius: 25px;
     margin: 2px 15px;
+    cursor: url('../mouse-hand.png'), auto;
 }
 
 
@@ -109,6 +114,7 @@ h1{
         .project-selection:hover{
             background: var(--bg-hover-accent);
             box-shadow: 7px 10px var(--border-dark);
+            cursor: url('../mouse-hand.png'), auto;
         }
         
         

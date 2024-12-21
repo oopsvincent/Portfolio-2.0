@@ -1,0 +1,45 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&family=Afacad:ital,wght@0,400..700;1,400..700&family=Host+Grotesk:ital,wght@0,300..800;1,300..800&family=Parkinsans:wght@300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body{
+    padding: 0px;
+    background-image: url('./Designer.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* background-attachment: fixed; */
+    margin: 0px; 
+    /* cursor: url("../mouse.png"), auto; */
+}
+.clock-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+#day{
+    text-align: left;
+    font-weight: lighter;
+}
+#clock{
+    padding: 0px 25px;
+    line-height: 10px;
+    font-family: "Host Grotesk", monospace;
+    font-size: 4.5rem;
+    font-weight: bold;
+    text-align: center;
+    backdrop-filter: blur(3px);
+    border-radius: 32px;
+    background-color: hsla(0, 0%, 50%, 0.25);
+}
+
+
+
+@media (max-width: 700px) {
+    body{
+        background-position: right;
+    }
+    #clock{
+        font-size: 3rem;
+    }
+}
