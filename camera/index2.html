@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Camera Recorder</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    video, canvas {
+      display: block;
+      margin-bottom: 10px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <video id="video" width="640" height="480" autoplay></video>
+  <canvas id="canvas" width="640" height="480" style="display:none;"></canvas>
+  <button id="start">Start Recording</button>
+  <button id="stop" disabled>Stop Recording</button>
+  <a id="download" style="display:none;">Download</a>
+
+  <script>
+    let mediaRecorder;
+    let recordedChunks = [];
+
+    // Get access to the camera and microphone
+    navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+      .then(function(stream) {
+        const video = document.getElementById('video');
+        video.srcObject = stream;
+
+        mediaRecorder = new MediaRecorder(stream);
+
+        mediaRecorder.ondataavailable = function(event) {
+          if (event.data.size > 0) {
+            recordedChunks.push(event.data);
+          }
+        };
+
+        mediaRecorder.onstop = function() {
+          const blob = new Blob(recordedChunks, { type: 'video/webm' });
+          const url = URL.createObjectURL(blob);
+          const download = document.getElementById('download');
+          download.href = url;
+          download.download = 'recording.webm';
+          download.style.display = 'block';
+        };
+      })
+      .catch(function(err) {
+        console.error('Error accessing media devices.', err);
+      });
+
+    document.getElementById('start').addEventListener('click', function() {
+      recordedChunks = [];
+      mediaRecorder.start();
+      document.getElementById('start').disabled = true;
+      document.getElementById('stop').disabled = false;
+    });
+
+    document.getElementById('stop').addEventListener('click', function() {
+      mediaRecorder.stop();
+      document.getElementById('start').disabled = false;
+      document.getElementById('stop').disabled = true;
+    });
+  </script>
+
+</body>
+</html>
