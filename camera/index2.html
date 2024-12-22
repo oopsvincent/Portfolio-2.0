@@ -26,15 +26,6 @@
 
   <video id="video" width="640" height="480" autoplay></video>
   <canvas id="canvas" width="640" height="480" style="display:none;"></canvas>
-  <select id="camera-facing">
-    <option value="user">Front Camera</option>
-    <option value="environment">Rear Camera</option>
-  </select>
-  <select id="video-quality">
-    <option value='{"width": {"ideal": 640}, "height": {"ideal": 480}}'>SD (480p)</option>
-    <option value='{"width": {"ideal": 1280}, "height": {"ideal": 720}}'>HD (720p)</option>
-    <option value='{"width": {"ideal": 1920}, "height": {"ideal": 1080}}'>Full HD (1080p)</option>    
-  </select>
   <button id="start">Start Recording</button>
   <button id="stop" disabled>Stop Recording</button>
   <a id="download" style="display:none;">Download</a>
@@ -42,55 +33,33 @@
   <script>
     let mediaRecorder;
     let recordedChunks = [];
-    let facingMode = 'user'; // Start with the front camera
 
-    let currentStream;
+    // Get access to the camera and microphone
+    navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+      .then(function(stream) {
+        const video = document.getElementById('video');
+        video.srcObject = stream;
 
-    function setupCamera(facingMode, qualityConstraints) {
-  const constraints = {
-    video: { ...qualityConstraints, facingMode: facingMode },
-    audio: true,
-  };
+        mediaRecorder = new MediaRecorder(stream);
 
-  if (currentStream) {
-    currentStream.getTracks().forEach((track) => track.stop());
-  }
+        mediaRecorder.ondataavailable = function(event) {
+          if (event.data.size > 0) {
+            recordedChunks.push(event.data);
+          }
+        };
 
-  
-
-  navigator.mediaDevices
-    .getUserMedia(constraints)
-    .then(function (stream) {
-      currentStream = stream;
-      const video = document.getElementById("video");
-      video.srcObject = stream;
-
-      mediaRecorder = new MediaRecorder(stream);
-
-      mediaRecorder.ondataavailable = function (event) {
-        if (event.data.size > 0) {
-          recordedChunks.push(event.data);
-        }
-      };
-
-      mediaRecorder.onstop = function () {
-        const blob = new Blob(recordedChunks, { type: "video/webm" });
-        const url = URL.createObjectURL(blob);
-        const download = document.getElementById("download");
-        download.href = url;
-        download.download = "recording.webm";
-        download.style.display = "block";
-      };
-
-      // Enable "Start Recording" button
-      document.getElementById("start").disabled = false;
-    })
-    .catch(function (err) {
-      console.error("Error accessing media devices.", err);
-    });
-}
-
-    setupCamera(facingMode, JSON.parse(document.getElementById('video-quality').value));
+        mediaRecorder.onstop = function() {
+          const blob = new Blob(recordedChunks, { type: 'video/webm' });
+          const url = URL.createObjectURL(blob);
+          const download = document.getElementById('download');
+          download.href = url;
+          download.download = 'recording.webm';
+          download.style.display = 'block';
+        };
+      })
+      .catch(function(err) {
+        console.error('Error accessing media devices.', err);
+      });
 
     document.getElementById('camera-facing').addEventListener('change', function() {
       facingMode = this.value;
