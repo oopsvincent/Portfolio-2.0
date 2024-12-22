@@ -32,11 +32,11 @@ body {
 }
 
 #main{
-    font-size: 4rem;
+    font-size: 3rem;
 }
 
-button {
-    font-size: 1em;
+#control button {
+    font-size: 1.5em;
     color: #fff;
     background-color: #007bff;
     border: 2px solid #007bff;
@@ -44,9 +44,13 @@ button {
     border-radius: 5px;
     cursor: pointer;
     margin-top: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-button:hover {
+#control button:hover {
     background-color: #0056b3;
     border-color: #0056b3;
 }
