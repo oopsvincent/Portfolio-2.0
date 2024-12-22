@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <head>
   <title>Camera Recorder with Options</title>
@@ -35,6 +35,15 @@
     <option value='{"width": {"ideal": 1280}, "height": {"ideal": 720}}'>HD (720p)</option>
     <option value='{"width": {"ideal": 1920}, "height": {"ideal": 1080}}'>Full HD (1080p)</option>
   </select>  
+
+  <label for="volume">Audio Volume:</label>
+  <input id="volume" type="range" min="0" max="2" step="0.1" value="1">
+  
+  <label for="zoom">Zoom:</label>
+<input id="zoom" type="range" min="0.5" max="20" step="0.1" value="1">
+
+
+
   <button id="start">Start Recording</button>
   <button id="stop" disabled>Stop Recording</button>
   <a id="download" style="display:none;">Download</a>
@@ -48,45 +57,49 @@
 
     function setupCamera(facingMode, qualityConstraints) {
   const constraints = {
-    video: { ...qualityConstraints, facingMode: facingMode },
+    video: { ...qualityConstraints, facingMode },
     audio: true,
   };
-
-  if (currentStream) {
-    currentStream.getTracks().forEach((track) => track.stop());
-  }
 
   navigator.mediaDevices
     .getUserMedia(constraints)
     .then(function (stream) {
-      currentStream = stream;
-      const video = document.getElementById("video");
-      video.srcObject = stream;
+      const videoTrack = stream.getVideoTracks()[0];
 
-      mediaRecorder = new MediaRecorder(stream);
-
-      mediaRecorder.ondataavailable = function (event) {
-        if (event.data.size > 0) {
-          recordedChunks.push(event.data);
+      if (currentStream) {
+        const sender = currentStream.getVideoTracks()[0].getSettings();
+        if (sender) {
+          currentStream.removeTrack(videoTrack);
+          currentStream.addTrack(videoTrack);
         }
-      };
-
-      mediaRecorder.onstop = function () {
-        const blob = new Blob(recordedChunks, { type: "video/webm" });
-        const url = URL.createObjectURL(blob);
-        const download = document.getElementById("download");
-        download.href = url;
-        download.download = "recording.webm";
-        download.style.display = "block";
-      };
-
-      // Enable "Start Recording" button
-      document.getElementById("start").disabled = false;
+      } else {
+        currentStream = stream;
+        const video = document.getElementById("video");
+        video.srcObject = currentStream;
+        mediaRecorder = new MediaRecorder(currentStream);
+      }
     })
-    .catch(function (err) {
-      console.error("Error accessing media devices.", err);
-    });
+    .catch((err) => console.error("Error accessing media devices:", err));
+    setupAudio(stream);
+
 }
+
+let audioContext;
+let gainNode;
+
+function setupAudio(stream) {
+  audioContext = new AudioContext();
+  const source = audioContext.createMediaStreamSource(stream);
+  gainNode = audioContext.createGain();
+  source.connect(gainNode);
+  gainNode.connect(audioContext.destination);
+
+  // Bind volume control
+  document.getElementById("volume").addEventListener("input", function () {
+    gainNode.gain.value = this.value;
+  });
+}
+
 
     setupCamera(facingMode, JSON.parse(document.getElementById('video-quality').value));
 
@@ -110,6 +123,18 @@
   }
 });
 
+document.getElementById("zoom").addEventListener("input", function () {
+  const zoomValue = this.value;
+  const videoTrack = currentStream.getVideoTracks()[0];
+
+  if (videoTrack && videoTrack.getCapabilities().zoom) {
+    videoTrack.applyConstraints({
+      advanced: [{ zoom: zoomValue }],
+    });
+  }
+});
+
+
 
     document.getElementById('stop').addEventListener('click', function() {
       mediaRecorder.stop();
@@ -118,5 +143,139 @@
     });
   </script>
 
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Camera Recorder with Features</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    video, canvas {
+      display: block;
+      margin-bottom: 10px;
+    }
+    button, label, input, select {
+      margin: 5px;
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <video id="video" width="640" height="480" autoplay></video>
+  <canvas id="canvas" width="640" height="480" style="display:none;"></canvas>
+  <select id="camera-facing">
+    <option value="user">Front Camera</option>
+    <option value="environment">Rear Camera</option>
+  </select>
+  <select id="video-quality">
+    <option value='{"width": {"ideal": 640}, "height": {"ideal": 480}}'>SD (480p)</option>
+    <option value='{"width": {"ideal": 1280}, "height": {"ideal": 720}}'>HD (720p)</option>
+    <option value='{"width": {"ideal": 1920}, "height": {"ideal": 1080}}'>Full HD (1080p)</option>
+    <option value='{"width": {"ideal": 2560}, "height": {"ideal": 1440}}'>2K (1440p)</option>
+    <option value='{"width": {"ideal": 3840}, "height": {"ideal": 2160}}'>4K (2160p)</option>
+    <option value='{"width": {"ideal": 7680}, "height": {"ideal": 4320}}'>8K (4320p)</option>
+  </select>
+  <label for="zoom">Zoom:</label>
+  <input id="zoom" type="range" min="0.5" max="20" step="0.1" value="1">
+  <label for="volume">Audio Volume:</label>
+  <input id="volume" type="range" min="0" max="2" step="0.1" value="1">
+  <button id="start" disabled>Start Recording</button>
+  <button id="stop" disabled>Stop Recording</button>
+  <a id="download" style="display:none;">Download</a>
+
+  <script>
+    let mediaRecorder;
+    let recordedChunks = [];
+    let currentStream;
+    let audioContext;
+    let gainNode;
+
+    function setupCamera(facingMode, qualityConstraints) {
+      const constraints = {
+        video: { ...qualityConstraints, facingMode },
+        audio: true,
+      };
+
+      navigator.mediaDevices
+        .getUserMedia(constraints)
+        .then(function (stream) {
+          const videoTrack = stream.getVideoTracks()[0];
+
+          if (currentStream) {
+            const sender = currentStream.getVideoTracks()[0];
+            if (sender) {
+              currentStream.removeTrack(videoTrack);
+              currentStream.addTrack(videoTrack);
+            }
+          } else {
+            currentStream = stream;
+            const video = document.getElementById("video");
+            video.srcObject = currentStream;
+
+            mediaRecorder = new MediaRecorder(currentStream);
+          }
+
+          setupAudio(stream);
+          document.getElementById("start").disabled = false;
+        })
+        .catch((err) => console.error("Error accessing media devices:", err));
+    }
+
+    function setupAudio(stream) {
+      audioContext = new AudioContext();
+      const source = audioContext.createMediaStreamSource(stream);
+      gainNode = audioContext.createGain();
+      source.connect(gainNode);
+      gainNode.connect(audioContext.destination);
+
+      document.getElementById("volume").addEventListener("input", function () {
+        gainNode.gain.value = this.value;
+      });
+    }
+
+    document.getElementById("camera-facing").addEventListener("change", function () {
+      setupCamera(this.value, JSON.parse(document.getElementById("video-quality").value));
+    });
+
+    document.getElementById("video-quality").addEventListener("change", function () {
+      setupCamera(document.getElementById("camera-facing").value, JSON.parse(this.value));
+    });
+
+    document.getElementById("zoom").addEventListener("input", function () {
+      const zoomValue = this.value;
+      const videoTrack = currentStream.getVideoTracks()[0];
+      if (videoTrack && videoTrack.getCapabilities().zoom) {
+        videoTrack.applyConstraints({ advanced: [{ zoom: zoomValue }] });
+      }
+    });
+
+    document.getElementById("start").addEventListener("click", function () {
+      if (mediaRecorder) {
+        recordedChunks = [];
+        mediaRecorder.start();
+        this.disabled = true;
+        document.getElementById("stop").disabled = false;
+      } else {
+        console.error("MediaRecorder is not initialized.");
+      }
+    });
+
+    document.getElementById("stop").addEventListener("click", function () {
+      mediaRecorder.stop();
+      document.getElementById("start").disabled = false;
+      this.disabled = true;
+    });
+  </script>
 </body>
 </html>
