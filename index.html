@@ -39,8 +39,33 @@
     body{
       background: var(--bg-main);
     }
+    .hero{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: var(--bg-hero);
+        color: var(--text-hero);
+        font-family: "Host Grotesk";
+    }
+    .hero svg{
+        margin-left: 18px;
+    }
+    .hero h1{
+        font-size: 8rem;
+    }
     h3 code{
         font-family: "Afacad Flux", "Poppins";
+    }
+    @media screen and (max-width: 768px){
+        .hero{
+            height: 85vh;
+            /* text-align: center; */
+            margin: auto 25px;
+        }
+        .hero h1{
+            font-size: 4rem;
+        }
     }
   </style>
 </head>
@@ -50,6 +75,10 @@
     
   </header>
 <main>
+    <div class="hero">
+        <h1>Farhan Ali Reza</h1>
+        <svg xmlns="http://www.w3.org/2000/svg" height="110px" viewBox="0 -960 960 960" width="110px" fill="#75FBFD"><path d="m346-60-76-130-151-31 17-147-96-112 96-111-17-147 151-31 76-131 134 62 134-62 77 131 150 31-17 147 96 111-96 112 17 147-150 31-77 130-134-62-134 62Zm91-287 227-225-45-41-182 180-95-99-46 45 141 140Z"/></svg>
+    </div>
     <h3 style="margin: 40px; background-color: beige; padding: 2px 5px; font-weight: 400"><code>
         Production 45% Completed
     </code></h3>

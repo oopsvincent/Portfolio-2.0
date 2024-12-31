@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         <img src="../assets/logo.jpg" alt="logo" width="60px" height="60px">
                     </a>
                     <a href="../projects/index.html">Projects</a>
-                    <a href="../about/about.html">About</a>
+                    <a href="../Services/index.html">Services</a>
                     <a href="../blogs/blogs.html">Blogs</a>
                     <a href="../login/signup.html">Get Started</a>
                 </div>
