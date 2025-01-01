@@ -1,5 +1,5 @@
-const os = detectOS();
-console.log(os); // "Windows", "MacOS", "Linux", "Android", "iOS", or "Unknown"
+// const os = detectOS();
+// console.log(os); // "Windows", "MacOS", "Linux", "Android", "iOS", or "Unknown"
 
 const box = document.getElementById('myBox');
 let movementSpeed = 10;
@@ -9,6 +9,8 @@ const buttons = document.querySelector('.buttons');
 
 document.addEventListener('keydown', event => {
     if (event.key.startsWith('Arrow')) {
+        box.textContent = "😧"
+        box.style.backgroundColor = 'tomato';
         event.preventDefault();
         switch (event.key) {
             case 'ArrowUp':
@@ -28,33 +30,38 @@ document.addEventListener('keydown', event => {
     }
 });
 
+document.addEventListener('keyup', event => {
+    box.textContent = "😊";
+    box.style.backgroundColor = 'powderblue';
+});
+
 function updateBoxPosition() {
     box.style.top = `${y}px`;
     box.style.left = `${x}px`;
 }
 
-function detectOS() {
-    const userAgent = navigator.userAgent;
+// function detectOS() {
+//     const userAgent = navigator.userAgent;
 
-    if (userAgent.indexOf("Windows") !== -1) {
-        return "Windows";
-    } else if (userAgent.indexOf("Macintosh") !== -1) {
-        return "MacOS";
-    } else if (userAgent.indexOf("Linux") !== -1) {
-        return "Linux";
-    } else if (userAgent.indexOf("Android") !== -1) {
-        return "Android";
-    } else if (
-        userAgent.indexOf("iPhone") !== -1 ||
-        userAgent.indexOf("iPad") !== -1 ||
-        userAgent.indexOf("iPod") !== -1
-    ) {
-        buttons.style.display = 'flex';
-        return "iOS";
-    } else {
-        return "Unknown";
-    }
-}
+//     if (userAgent.indexOf("Windows") !== -1) {
+//         return "Windows";
+//     } else if (userAgent.indexOf("Macintosh") !== -1) {
+//         return "MacOS";
+//     } else if (userAgent.indexOf("Linux") !== -1) {
+//         return "Linux";
+//     } else if (userAgent.indexOf("Android") !== -1) {
+//         return "Android";
+//     } else if (
+//         userAgent.indexOf("iPhone") !== -1 ||
+//         userAgent.indexOf("iPad") !== -1 ||
+//         userAgent.indexOf("iPod") !== -1
+//     ) {
+//         buttons.style.display = 'flex';
+//         return "iOS";
+//     } else {
+//         return "Unknown";
+//     }
+// }
 
 const btn1 = document.getElementById('btn1');
 const btn2 = document.getElementById('btn2');
