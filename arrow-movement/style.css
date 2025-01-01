@@ -1,0 +1,57 @@
+body{
+    margin: 0;
+}
+#myBox{
+    width: 200px;
+    height: 200px;
+    background-color: powderblue;
+    position: relative;
+    transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+    font-size: 7.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.buttons{
+    width: 200px;
+    height: 200px;
+    display: none;
+    position: relative;
+    justify-content: center;
+    align-self: center;
+    margin-left: 100px;
+    margin-top: 250px;
+    bottom: 0px;
+}
+
+.btn{
+    width: 50px;
+    height: 50px;
+    background-color: #f44336;
+    color: white;
+    position: absolute;
+    border: none;
+    border-radius: 12px;
+    outline: none;
+    font-size: 0.9rem;
+}
+
+#btn1{top: 0; left: 75px;}
+#btn2{top: 75px; left: 0;}
+#btn3{top: 75px; right: 0;}
+#btn4{bottom: 0; left: 75px;}
+
+@media screen and (max-width: 600px){
+    #myBox{
+        width: 100px;
+        height: 100px;
+        font-size: 3rem;
+    }
+    .buttons{
+        display: flex;
+    }
+    .btn{
+        font-size: 0.95rem;
+    }
+}
