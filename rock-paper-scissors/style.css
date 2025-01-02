@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&family=Host+Grotesk:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body{
+    font-size: 2rem;
+    font-weight: bold;
+    font-family: 'Host Grotesk', sans-serif;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    user-select: none;
+}
+
+h1{
+    font-size: 3.5rem;
+    color: hsl(0, 0%, 20%);
+}
+
+.choices {
+    margin-bottom: 30px;
+    user-select: none;
+}
+
+.choices button {
+    font-size: 5rem;
+    min-width: 150px;
+    height: 150px;
+    background-color: hsla(200, 100%, 60%);
+    /* padding: 10px 20px; */
+    margin: 10px;
+    border: none;
+    border-radius: 100%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    &:hover {
+        background-color: hsla(200, 100%, 40%);
+        transform: scale(1.2);
+    }
+}
+
+
+#playerDisplay, #computerDisplay {
+    font-size: 2.5rem;
+    color: hsl(0, 0%, 40%);
+}
+
+#result {
+    font-size: 4.5rem;
+    margin: 30px 0px;
+    /* color: hsl(0, 0%, 30%); */
+}
+
+.greenText{
+    color: rgb(1, 255, 77);
+}
+.redText{
+    color: #ff0000;
+}
+
+.label{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: hsl(0, 0%, 33%);
+    opacity: 0.5;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+}
+
+/* HTML: <div class="loader"></div> */
+.loader {
+    /* background-color: #ff0000;
+    color: #ff0000; */
+    --s: 15px;
+    width: calc(var(--s)*2.33);
+    aspect-ratio: 1;
+    display: flex;
+    justify-content: space-between;
+    animation: l29-0 1s infinite;
+  }
+  .loader::before,
+  .loader::after {
+    content: "";
+    width: var(--s);
+    --_g: no-repeat radial-gradient(farthest-side,#ff0000 94%,#00047400);
+    background:
+      var(--_g) top,
+      var(--_g) bottom;
+    background-size: 100% var(--s);
+    transform-origin: 50% calc(100% - var(--s)/2);
+    animation: inherit;
+    animation-name: l29-1;
+  }
+  .loader::after {
+    --_s:-1;
+  }
+  @keyframes l29-0 {
+      100% {transform:translateY(calc(var(--s) - 100%))}
+  }
+  @keyframes l29-1 {
+      100% {transform:rotate(calc(var(--_s,1)*-180deg))}
+  }
+
+@media (max-width: 600px){
+    body{
+        font-size: 1rem;
+    }
+    h1{
+        padding: 0px 20px;
+    }
+    .choices button{
+        cursor: default;
+        min-width: 100px;
+        height: 100px;
+        font-size: 3rem;
+        padding: none;
+    }
+}
