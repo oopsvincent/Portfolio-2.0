@@ -30,6 +30,10 @@ body{
     color: var(--text-hero);
     font-family: "Host Grotesk";
 }
+
+a:hover{
+    cursor: url('./mouse-hand.png'), auto;
+}
 .hero svg{
     margin-left: 18px;
 }
@@ -77,4 +81,48 @@ h3 code{
     filter: blur(0px);
     transform: translate(0px);
     /* transition: all 1s ease-in-out; */
+}
+
+.logos{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo:nth-child(3) img{
+    scale: 1.2;
+    transform: translateY(23px);
+}
+
+.javasc-fr .logo:nth-child(2) img{
+    transform: translateY(25px);
+    animation: spin 2s infinite alternate;
+}
+
+@keyframes spin {
+    0%{
+        transform: rotate(0deg);
+    }
+
+    100%{
+        transform: rotate(560deg);
+    }
+}
+
+
+.logo{
+    width: 200px;
+    height: 200px;
+    margin: 75px;
+    padding: 25px;
+    background: linear-gradient(to right, rgb(165, 255, 165), rgb(255, 255, 154));
+}
+
+.logos img{
+    width: 150px;
 }
