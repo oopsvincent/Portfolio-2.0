@@ -6,6 +6,11 @@ html::-webkit-scrollbar{
     background: var(--mono-6);
     padding: 210px;
 }
+
+header{
+    z-index: 1000;
+}
+
 html::-webkit-scrollbar-thumb{
     width: 5px;
     margin: 5px;
@@ -71,9 +76,9 @@ h3 code{
 
 .hidden {
     opacity: 0;
-    filter: blur(5px);
+    filter: blur(25px);
     transform: translate(-100px);
-    transition: all 2s ease-in-out;
+    transition: all 1s ease-in-out;
 }
 
 .show {
@@ -101,7 +106,26 @@ h3 code{
 
 .javasc-fr .logo:nth-child(2) img{
     transform: translateY(25px);
-    animation: spin 2s infinite alternate;
+    animation: spin 120s infinite;
+}
+
+.logo:nth-child(1){
+    transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.logo:nth-child(2){
+    transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.logo:nth-child(3){
+    transition: all 1.5s cubic-bezier(0.215, 0.610, 0.355, 1);
+}
+
+.javasc-fr .logo:nth-child(1) {
+    transition: all 3s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+}
+.javasc-fr .logo:nth-child(2) {
+    transition: all 4s cubic-bezier(0.455, 0.03, 0.515, 0.955);
 }
 
 @keyframes spin {
@@ -110,7 +134,7 @@ h3 code{
     }
 
     100%{
-        transform: rotate(560deg);
+        transform: rotate(3560deg);
     }
 }
 
@@ -120,9 +144,29 @@ h3 code{
     height: 200px;
     margin: 75px;
     padding: 25px;
-    background: linear-gradient(to right, rgb(165, 255, 165), rgb(255, 255, 154));
+    /* background: linear-gradient(to right, rgb(165, 255, 165), rgb(255, 255, 154)); */
 }
 
 .logos img{
     width: 150px;
+}
+
+.skills{
+    text-align: center;
+    
+}
+.skills-h1{
+    font-size: 78px;
+    font-family: 'Host Grotesk', 'Poppins', Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.notice{
+    font-family: 'Poppins';
+    font-size: 24px;
+    padding: 52px;
+    border-left: 2px solid cyan;
+    outline: 10px solid rgb(0, 0, 0);
+    margin: 50px;
+    border-radius: 15px;
+    background: linear-gradient(to right, rgb(196, 196, 196), rgb(99, 99, 99));
 }
