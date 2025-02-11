@@ -1,0 +1,148 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <title>My Test Website</title>
+</head>
+<body>
+
+  <video id="video" width="640" height="480" autoplay></video>
+  <canvas id="canvas" width="640" height="480"></canvas>
+  <button id="capture">Capture</button>
+
+  <script>
+    // Get access to the camera and microphone
+    navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+      .then(function(stream) {
+        // Create a video element and set its source to the stream
+        var video = document.getElementById('video');
+        video.srcObject = stream;
+      })
+      .catch(function(err) {
+        console.error('Error accessing media devices.', err);
+      });
+
+    // Get access to storage
+    window.requestFileSystem(window.TEMPORARY, 1024*1024, function(fs) {
+      // Create a file
+      fs.root.getFile('video.mp4', { create: true, exclusive: false }, function(fileEntry) {
+        // Create a FileWriter object
+        fileEntry.createWriter(function(fileWriter) {
+          fileWriter.onwriteend = function(evt) {
+            console.log('Write completed.');
+          };
+
+          fileWriter.onerror = function(evt) {
+            console.error('Write failed: ' + evt.target.error.code);
+          };
+
+          // Capture the video frame
+          var canvas = document.getElementById('canvas');
+          var context = canvas.getContext('2d');
+          context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+          // Create a blob URL for the captured frame
+          var dataURL = canvas.toDataURL('image/png');
+          var blob = dataURLtoBlob(dataURL);
+
+          // Write the blob to the file
+          fileWriter.write(blob);
+        }, errorHandler);
+      }, errorHandler);
+    }, errorHandler);
+
+    function errorHandler(evt) {
+      console.error(evt.target.error.code);
+    }
+
+    function dataURLtoBlob(dataURL) {
+      var arr = dataURL.split(','), mime = arr[0].match(/:(.*?);/)[1],
+          bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
+      while(n--){
+        u8arr[n] = bstr.charCodeAt(n);
+      }
+      return new Blob([u8arr], {type:mime});
+    }
+  </script>
+
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Camera Recorder</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    video, canvas {
+      display: block;
+      margin-bottom: 10px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <video id="video" width="640" height="480" autoplay></video>
+  <canvas id="canvas" width="640" height="480" style="display:none;"></canvas>
+  <button id="start">Start Recording</button>
+  <button id="stop" disabled>Stop Recording</button>
+  <a id="download" style="display:none;">Download</a>
+
+  <script>
+    let mediaRecorder;
+    let recordedChunks = [];
+
+    // Get access to the camera and microphone
+    navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+      .then(function(stream) {
+        const video = document.getElementById('video');
+        video.srcObject = stream;
+
+        mediaRecorder = new MediaRecorder(stream);
+
+        mediaRecorder.ondataavailable = function(event) {
+          if (event.data.size > 0) {
+            recordedChunks.push(event.data);
+          }
+        };
+
+        mediaRecorder.onstop = function() {
+          const blob = new Blob(recordedChunks, { type: 'video/webm' });
+          const url = URL.createObjectURL(blob);
+          const download = document.getElementById('download');
+          download.href = url;
+          download.download = 'recording.webm';
+          download.style.display = 'block';
+        };
+      })
+      .catch(function(err) {
+        console.error('Error accessing media devices.', err);
+      });
+
+    document.getElementById('start').addEventListener('click', function() {
+      recordedChunks = [];
+      mediaRecorder.start();
+      document.getElementById('start').disabled = true;
+      document.getElementById('stop').disabled = false;
+    });
+
+    document.getElementById('stop').addEventListener('click', function() {
+      mediaRecorder.stop();
+      document.getElementById('start').disabled = false;
+      document.getElementById('stop').disabled = true;
+    });
+  </script>
+
+</body>
+</html>

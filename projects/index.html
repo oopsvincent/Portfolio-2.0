@@ -1,88 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <title>Farhan Portfolio Website</title>
-  
-  <!-- HTML -->
-  
-
-  <!-- Custom Styles -->
-  <link rel="stylesheet" href="../styles/nav.css">
-  <link rel="stylesheet" href="../styles/projects.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Farhan Ali Reza</title>
+    <link rel="stylesheet" href="../styles/projects.css">
 </head>
-
 <body>
-  <header>
-    
-  </header>
-<main>
-    <main>
-        <h1>Projects</h1>
-        <div class="projects-section">
-
-            <!-- Beginner Projects Section -->
-            <div class="project-selection" id="p1">
-                <div class="label">
-                    <h2>Beginner Projects</h2>
-                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m480-360 160-160H320l160 160Zm0 280q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"></path></svg>
-                </div>
-                <div id="beginnerSection" class="section">
-                    <ul class="projects-beginner">
-                        <li><a href="../age-validator/index.html">Age Validator</a></li>
-                        <li><a href="../counter/index.html">Counter</a></li>
-                        <li><a href="../number-guesser/index.html">Number Guessor</a></li>
-                        <li><a href="../dice-roller/images/">Dice Roller</a></li>
-                        <li><a href="../temperature-converter/index.html">Temperature Convertor</a></li>
-                        <li><a href="../interest-calculator/index.html">Interest Calculator</a></li>
-                    </ul>
-                </div>
+    <div class="container">
+        <header>
+            header 
+        </header>
+        <nav>
+            <h2>
+                <a href="#" onclick="loadProject('../about')">Project's Home</a>
+            </h2>
+            <div class="beginner">
+                <span><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m114.31-541.65 174.15-298.69 174.15 298.69h-348.3Zm174.82 385.92q-55.51 0-93.88-38.63-38.36-38.63-38.36-93.3 0-55.49 38.38-94.15 38.39-38.65 93.91-38.65 55.51 0 93.97 38.48 38.46 38.49 38.46 94 0 55.52-38.48 93.88-38.48 38.37-94 38.37Zm.25-47.96q35.2 0 59.74-24.67 24.53-24.66 24.53-59.86t-24.7-59.74q-24.71-24.54-59.96-24.54-35.26 0-59.7 24.7-24.44 24.71-24.44 59.97 0 35.25 24.66 59.7 24.67 24.44 59.87 24.44Zm-90.5-385.92h179.35l-89.77-155.74-89.58 155.74ZM540-155.73v-264.73h264.73v264.73H540Zm47.96-47.96h168.81V-372.5H587.96v168.81Zm84.42-337.96q-43.26-35.14-73.99-60.64-30.73-25.5-51.14-47.24-20.4-21.74-30.06-41.19-9.65-19.45-9.65-43.29 0-37.21 23.37-62.18 23.36-24.96 61.79-24.96 23.22 0 42.45 10.51 19.22 10.51 37.31 34.1 17.85-23.19 37.92-33.9 20.08-10.71 42.78-10.71 36.96 0 60.49 25.56 23.54 25.57 23.54 62.69 0 23.67-9 42.69-9 19.02-29.49 40.35-20.5 21.33-51.6 46.39-31.1 25.05-74.72 61.82Zm.08-63.81q66.04-53.42 91.41-81.08 25.36-27.65 25.36-49.54 0-14.8-10.96-25.96-10.96-11.15-25.52-11.15-9.86 0-18.48 5.31-8.62 5.3-17.66 15.34l-44.15 40.92-43.34-40.92q-10.23-10.23-18.76-15.44-8.52-5.21-17.62-5.21-15.44 0-26.34 10.59t-10.9 25.64q0 23.9 26.77 52.79 26.77 28.9 90.19 78.71Zm0-88.58Zm-382.61 33.31Zm.3 369.73Zm381.31 0Z"/></svg></span>
+                <h3>Beginner Projects</h3>
             </div>
+            <a href="#" onclick="loadProject('../age-validator')">Age Validadtor</a>
+            <a href="#" onclick="loadProject('../counter')">Counter</a>
+        <a href="#" onclick="loadProject('../number-guesser')">Number Guessor</a>
+        <a href="#" onclick="loadProject('../dice-roller')">Dice Roller</a>
+        <a href="#" onclick="loadProject('../temperature-converter')">Temperature Convertor</a>
+        <a href="#" onclick="loadProject('../interest-calculator')">Interest Calculator</a>
 
-            <!-- Intermediate Projects Section -->
-            <div class="project-selection b" id="p2">
-                <div class="label">
-                    <h2>Intermediate Projects</h2>
-                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m480-360 160-160H320l160 160Zm0 280q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"></path></svg>
-                </div>
-                <div id="intermediateSection" class="section">
-                    <ul class="projects-intermediate">
-                        <li><a href="../password-generator/index.html">Password Generator</a></li>
-                        <li><a href="../identity-generator/index.html">Random Identity Generator</a></li>
-                        <li><a href="../digital-clock/index.html">Digital Clock</a></li>
-                        <li><a href="../stopwatch/index.html">Stopwatch</a></li>
-                        <li><a href="../calculator/index.html">Calculator</a></li>
-                        <li><a href="../arrow-movement/index.html">Moving Boxes with Keys</a></li>
-                        <li><a href="../rock-paper-scissors/index.html">Rock Paper Scissors Game</a></li>
-                        <li><a href="../image-slider/index.html">Image Slider</a></li>
-                    </ul>
-                </div>
-            </div>
+        <h3>Intermediate Projects</h3>
+        <a href="#" onclick="loadProject('../password-generator')">Password Generator</a>
+        <a href="#" onclick="loadProject('../identity-generator')">Random Identity Generator</a>
+        <a href="#" onclick="loadProject('../digital-clock')">Digital Clock</a>
+        <a href="#" onclick="loadProject('../stopwatch')">Stopwatch</a>
+        <a href="#" onclick="loadProject('../calculator')">Calculator</a>
+        <a href="#" onclick="loadProject('../arrow-movement')">Key Control</a>
+        <a href="#" onclick="loadProject('../rock-paper-scissors')">Rock Paper Scissor</a>
+        <a href="#" onclick="loadProject('../image-slider')">Image Slider</a>
 
-            <!-- Advanced Projects Section -->
-            <div class="project-selection c" id="p3">
-                <div class="label">
-                    <h2>Advanced Projects (It won't work right now)</h2>
-                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m480-360 160-160H320l160 160Zm0 280q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"></path></svg>
-                </div>
-                <div id="advancedSection" class="section">
-                    <ul class="projects-advanced">
-                        <li><a href="../NoteTakingApp/index.html">Note Taking App</a></li>
-                        <li><a href="../camera/index.html">Camera Project</a></li>
-                        <li><a href="../camera/index2.html">Project3</a></li>
-                        <li><a href="#">Project2</a></li>
-                        <li><a href="#">Project1</a></li>
-                    </ul>
-                </div>
-            </div>
-
-        </div>
-    </main>
-
+        <h3>Advanced Projects</h3>
+        <a href="#" onclick="loadProject('../noteTakingApp')">Note Taking App</a>
+        <a href="#" onclick="loadProject('../camera')">Camera App</a>
+        </nav>
+        <main>
+            <iframe id="project-frame" src=""></iframe>
+        </main>
+        <footer>
+        </footer>
+    </div>
     <script src="../scripts/projects.js"></script>
-  <script src="../scripts/navbar.js"></script>
 </body>
 </html>

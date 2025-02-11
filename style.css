@@ -111,21 +111,40 @@ h3 code{
 
 .logo:nth-child(1){
     transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+    &:hover{
+        transform:  rotate3d(228, 53, 89, -23deg);
+    }
 }
 
 .logo:nth-child(2){
     transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+    &:hover{
+        transform:  rotate3d(228, 53, 89, -23deg);
+    }
 }
 
 .logo:nth-child(3){
     transition: all 1.5s cubic-bezier(0.215, 0.610, 0.355, 1);
+    &:hover{
+        transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+        transform:  rotate3d(228, 53, 89, -23deg);
+    }
+    /* animation: Dspin 120s cubic-bezier(0.175, 0.885, 0.32, 1.275) infinite; */
 }
 
 .javasc-fr .logo:nth-child(1) {
     transition: all 3s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    &:hover{
+        transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+        transform:  rotate3d(228, 53, 89, -23deg);
+    }
 }
 .javasc-fr .logo:nth-child(2) {
     transition: all 4s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    &:hover{
+        transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+        transform:  rotate3d(228, 53, 89, -23deg);
+    }
 }
 
 @keyframes spin {
@@ -136,6 +155,29 @@ h3 code{
     100%{
         transform: rotate(3560deg);
     }
+}
+
+@keyframes Dspin {
+    0%{
+        transform: rotate3d(0);
+    }
+    20%{
+        transform:  rotate3d(1, 1, 18, 45deg);
+    }
+    40%{
+        transform: rotate3d(25, 5, 6, 30deg);
+    }
+    60%{
+        transform:  rotate3d(1, 29, 25, -45deg);
+        
+    }
+    80%{
+        transform: rotate3d(2, 5, 6, -30deg);
+
+    }
+    100%{
+        transform: rotate3d(0);
+    } 
 }
 
 
