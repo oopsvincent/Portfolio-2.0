@@ -13,9 +13,8 @@ menuToggle.addEventListener("click", () => {
 });
 
 
-// if (document.) {
-    
-// }
-// navbar.addEventListener("click", () => {
-//     navbar.classList.toggle("active");
-// })
+if (window.innerWidth <= 768) {
+    navbar.addEventListener("click", () => {
+        navbar.classList.toggle("active");
+    })
+}

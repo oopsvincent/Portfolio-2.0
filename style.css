@@ -7,6 +7,11 @@ html::-webkit-scrollbar{
     padding: 210px;
 }
 
+
+body{
+    background: rgb(56, 56, 56);
+}
+
 header{
     z-index: 1000;
 }
@@ -110,29 +115,63 @@ h3 code{
 }
 
 .logo:nth-child(1){
+    background: linear-gradient(to right, rgb(124, 124, 124), rgb(183, 75, 255));
+    border-radius: 15px;
     transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
     &:hover{
+        transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
         transform:  rotate3d(228, 53, 89, -23deg);
+        box-shadow: 50px 50px 50px rgb(106, 255, 255);
+        &.logo{
+            transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+            width: 280px;
+            &.logo img{
+                transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+                transform: translateX(-50px);
+            }
+        }
     }
 }
 
 .logo:nth-child(2){
-    transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+    background: linear-gradient(to right, rgb(124, 124, 124), rgb(183, 75, 255));
+    border-radius: 15px;
+    transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
     &:hover{
+        transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
         transform:  rotate3d(228, 53, 89, -23deg);
+        box-shadow: 50px 50px 50px rgb(106, 255, 255);
+        &.logo{
+            transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+            width: 280px;
+            &.logo img{
+                transform: translateX(-50px);
+                transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+            }
+        }
     }
 }
 
 .logo:nth-child(3){
-    transition: all 1.5s cubic-bezier(0.215, 0.610, 0.355, 1);
+    background: linear-gradient(to right, rgb(124, 124, 124), rgb(183, 75, 255));
+    border-radius: 15px;
+    transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
     &:hover{
-        transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+        transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
         transform:  rotate3d(228, 53, 89, -23deg);
+        box-shadow: 50px 50px 50px rgb(106, 255, 255);
+        &.logo{
+            transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+            width: 280px;
+            &.logo img{
+                transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+                transform: translateX(-50px);
+            }
+        }
     }
-    /* animation: Dspin 120s cubic-bezier(0.175, 0.885, 0.32, 1.275) infinite; */
 }
 
-.javasc-fr .logo:nth-child(1) {
+/* .javasc-fr .logo:nth-child(1) {
     transition: all 3s cubic-bezier(0.455, 0.03, 0.515, 0.955);
     &:hover{
         transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
@@ -145,7 +184,7 @@ h3 code{
         transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
         transform:  rotate3d(228, 53, 89, -23deg);
     }
-}
+} */
 
 @keyframes spin {
     0%{
@@ -213,6 +252,19 @@ h3 code{
     background: linear-gradient(to right, rgb(196, 196, 196), rgb(99, 99, 99));
 }
 
+@media (min-width: 1035px) and (max-width: 1450px){
+    .logo{
+        width: 45px;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1034px){
+    .logos{
+        flex-direction: column;
+    }
+}
+
+
 @media (max-width: 768px) {
     .logo:nth-child(3) img{
         scale: 1.2;
@@ -225,6 +277,7 @@ h3 code{
     }
     
     .logo:nth-child(1){
+        transform: scale(-25px);
         transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
         &:hover{
             transform:  rotate3d(228, 53, 89, -23deg);
@@ -232,6 +285,8 @@ h3 code{
     }
     
     .logo:nth-child(2){
+        transform: scale(-25px);
+
         transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
         &:hover{
             transform:  rotate3d(228, 53, 89, -23deg);
@@ -239,6 +294,8 @@ h3 code{
     }
     
     .logo:nth-child(3){
+        transform: scale(-25px);
+
         transition: all 1s cubic-bezier(0.215, 0.610, 0.355, 1);
         &:hover{
             transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
@@ -250,19 +307,22 @@ h3 code{
     .javasc-fr .logo:nth-child(1) {
         transition: all 1.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
         &:hover{
-            transform:  rotate3d(228, 53, 89, -23deg);
+            transform: rotate3d(228, 53, 89, -23deg);
             /* transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1); */
         }
     }
     .javasc-fr .logo:nth-child(2) {
         transition: all 1.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
         &:hover{
-            transform:  rotate3d(228, 53, 89, -23deg);
+            transform: rotate3d(228, 53, 89, -23deg);
             /* transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1); */
         }
     }
 
     .logos{
         flex-direction: column;
+    }
+    .logo{
+        margin: 0px;
     }
 }
