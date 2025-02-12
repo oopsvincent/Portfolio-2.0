@@ -124,3 +124,67 @@ footer{
     background: gold;
     grid-area: footer;
 }
+
+
+nav.active {
+    /* display: block; */
+    transform: translate(9vw, 1vw);
+}
+
+/* Style for the Hamburger Button */
+.hamburger {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    margin-left: 80px;
+}
+
+/* Responsive: Show Navbar normally on bigger screens */
+@media (min-width: 768px) {
+    .hamburger {
+        display: none;
+    }
+
+    nav {
+        display: block;
+    }
+}
+
+@media (max-width: 768px) {
+    .home-btn{
+        margin-left: 0px;
+    }
+    nav {
+        scroll-margin-block-start: 25px;
+    border-radius: 25px;
+    transform: translate(-700px, -800px);
+    width: 100%;
+    transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+    nav{
+        position: absolute;
+        /* transform: translateX(300px); */
+        top: 13.5vh;
+        left: 0px;
+        width: 80vw;
+        overflow: scroll;
+        height: 70vh;
+        padding-left: 10px;
+        
+    }
+    a{
+        margin-left: 25px;
+    }
+    .container{
+        position: relative;
+        display: grid;
+        grid-template-columns: 250px 1fr 1fr;
+        grid-template-rows: 70px 1fr 250px;
+        grid-template-areas:    "header header header"
+                                "main main main"
+                                "footer footer footer";
+    }
+}

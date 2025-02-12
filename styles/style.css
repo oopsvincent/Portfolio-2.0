@@ -1,9 +1,9 @@
-html{
+/* html{
     cursor: url("../mouse.png"), auto;
 }
 html a:hover{
     cursor: url("../mouse-hand.png"), auto;
-}
+} */
 .container{
   display: flex;
   flex-direction: row;

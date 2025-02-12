@@ -36,9 +36,9 @@ body{
     font-family: "Host Grotesk";
 }
 
-a:hover{
+/* a:hover{
     cursor: url('./mouse-hand.png'), auto;
-}
+} */
 .hero svg{
     margin-left: 18px;
 }
@@ -211,4 +211,58 @@ h3 code{
     margin: 50px;
     border-radius: 15px;
     background: linear-gradient(to right, rgb(196, 196, 196), rgb(99, 99, 99));
+}
+
+@media (max-width: 768px) {
+    .logo:nth-child(3) img{
+        scale: 1.2;
+        transform: translateY(23px);
+    }
+    
+    .javasc-fr .logo:nth-child(2) img{
+        transform: translateY(25px);
+        animation: spin 120s infinite;
+    }
+    
+    .logo:nth-child(1){
+        transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+        &:hover{
+            transform:  rotate3d(228, 53, 89, -23deg);
+        }
+    }
+    
+    .logo:nth-child(2){
+        transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+        &:hover{
+            transform:  rotate3d(228, 53, 89, -23deg);
+        }
+    }
+    
+    .logo:nth-child(3){
+        transition: all 1s cubic-bezier(0.215, 0.610, 0.355, 1);
+        &:hover{
+            transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+            transform:  rotate3d(228, 53, 89, -23deg);
+        }
+        /* animation: Dspin 120s cubic-bezier(0.175, 0.885, 0.32, 1.275) infinite; */
+    }
+    
+    .javasc-fr .logo:nth-child(1) {
+        transition: all 1.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+        &:hover{
+            transform:  rotate3d(228, 53, 89, -23deg);
+            /* transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1); */
+        }
+    }
+    .javasc-fr .logo:nth-child(2) {
+        transition: all 1.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+        &:hover{
+            transform:  rotate3d(228, 53, 89, -23deg);
+            /* transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1); */
+        }
+    }
+
+    .logos{
+        flex-direction: column;
+    }
 }

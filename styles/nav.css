@@ -116,6 +116,6 @@ nav .home-link{
 }
 #home-link:hover{
   background: linear-gradient(to right, violet, aqua);
-  cursor: url('../mouse-hand.png'), auto;
+  /* cursor: url('../mouse-hand.png'), auto; */
 }
 }
