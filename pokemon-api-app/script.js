@@ -3,8 +3,10 @@ const fact = document.getElementById('fact');
 const searchInput = document.getElementById('searchPokemon');
 const nextBtn = document.getElementById('nextPage');
 const prevBtn = document.getElementById('prevPage');
+const pageNumberText = document.getElementById('pageNumber');
+let pageNumber = 1;
 
-let nextPage = "https://pokeapi.co/api/v2/pokemon?offset=0&limit=20";
+let nextPage = "https://pokeapi.co/api/v2/pokemon";
 let prevPage = null;
 let allPokemon = [];
 
@@ -23,57 +25,68 @@ function fetchPokemonList(url) {
             cards.innerHTML = ""; // Clear previous results
             allPokemon = [];
 
-            data.results.forEach(pokemon => fetchPokemonDetails(pokemon));
+            // Fetch all Pokémon details, then sort by ID
+            Promise.all(data.results.map(pokemon => fetchPokemonDetails(pokemon)))
+                .then(() => {
+                    // Sort by ID before displaying
+                    allPokemon.sort((a, b) => a.id - b.id);
+                    allPokemon.forEach(pokemon => cards.appendChild(pokemon.element));
+                });
         })
         .catch(error => console.error("Error fetching Pokémon list:", error));
-}
 
-function fetchPokemonDetails(pokemon) {
-    fetch(pokemon.url)
+    }
+    
+    
+    function fetchPokemonDetails(pokemon) {
+        return fetch(pokemon.url)
         .then(response => response.json())
         .then(data => {
             let newCard = document.createElement('div');
             newCard.classList.add("card");
-
+            
             let img = document.createElement("img");
-img.src = "https://placehold.co/200?text=Loading...";
-img.alt = data.name;
-
-// Preload the real image first
-let realImage = new Image();
-realImage.src = data.sprites.front_default || "https://placehold.co/200?text=No+Image";
-realImage.onload = function () {
-    img.src = realImage.src; // Replace placeholder only when real image loads
-};
-
-
-
+            img.src = "https://placehold.co/200?text=Loading...";
+            img.alt = data.name;
+            
+            let realImage = new Image();
+            realImage.src = data.sprites.front_default || "https://placehold.co/200?text=No+Image";
+            realImage.onload = function () {
+                img.src = realImage.src;
+            };
+            
             newCard.innerHTML = `
-                <div class="information">
+            <div class="information">
                     <h2 class="pokeName">${data.name.toUpperCase()}</h2>
                     <h3 class="pokeType">${data.types.map(t => t.type.name).join(", ")}</h3>
                     <p class="desc">Height: ${data.height} | Weight: ${data.weight}</p>
                     <p>ID: ${data.id}</p>
-                </div>`;
+                    </div>`;
+                    
+                    newCard.prepend(img);
 
-            newCard.prepend(img);
-            cards.append(newCard);
-
-            allPokemon.push({ element: newCard, name: data.name.toLowerCase() });
+            // Store in array for sorting later
+            allPokemon.push({ element: newCard, name: data.name.toLowerCase(), id: data.id });
         })
         .catch(error => console.error("Error fetching Pokémon details:", error));
-}
-
-// Pagination controls
-nextBtn.addEventListener("click", () => {
-    if (nextPage) fetchPokemonList(nextPage);
-    searchInput.ariaPlaceholder = "Search Pokemon from this page";
-});
-
-prevBtn.addEventListener("click", () => {
-    if (prevPage) fetchPokemonList(prevPage);
-});
-
+        
+    }
+    
+    
+    // Pagination controls
+    nextBtn.addEventListener("click", () => {
+        if (nextPage) fetchPokemonList(nextPage);
+        searchInput.ariaPlaceholder = "Search Pokemon from this page";
+        pageNumber++;
+        pageNumberText.textContent = `Page ${pageNumber} of 63`;
+    });
+    
+    prevBtn.addEventListener("click", () => {
+        if (prevPage) fetchPokemonList(prevPage);
+        pageNumber--;
+        pageNumberText.textContent = `Page ${pageNumber} of 63`;
+    });
+    
 // Search functionality
 searchInput.addEventListener("input", (event) => {
     let searchText = event.target.value.toLowerCase();

@@ -18,10 +18,11 @@
     flex-wrap: wrap;
 }
 .card{
+    display: flex;
+    text-align: center;
     color: antiquewhite;
     margin: 25px;
     flex-direction: column;
-    display: flex;
     width: 250px;
     padding: 25px;
     justify-content: center;
@@ -37,5 +38,22 @@
 }
 
 input{
-    width: 80vw;
+    width: 70vw;
+    height: 60px;
+    /* font-size: 24px; */
+    border-radius: 25px;
+    border: none;
+    outline: none;
+    background: rgb(189, 189, 189);
+    padding: 10px 25px;
+    &::placeholder{
+        text-align: center;
+    }
+}
+
+.buttons{
+    display: flex;
+    padding: 20px;
+    background: antiquewhite;
+    gap: 5vw;
 }

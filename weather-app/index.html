@@ -4,8 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <form action="" class="weatherForm">
+        <input type="text" class="cityInput" placeholder="Enter City">
+        <button type="submit" id="submit">Get Weather</button>
+    </form>
+
+    <div class="card" style="display: none;">
+        <h1 class="cityDisplay">Paris</h1>
+        <p class="tempDisplay">55°F</p>
+        <p class="humidityDisplay">Humidity: 55%</p>
+        <p class="descDisplay">Snow</p>
+        <p class="weatheremoji">🌨️</p>
+        <p class="errorDisplay">Please enter a city</p>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
