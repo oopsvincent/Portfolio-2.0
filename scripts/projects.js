@@ -1,5 +1,6 @@
 function loadProject(projectPath) {
     document.getElementById('project-frame').src = projectPath + "/index.html";
+    document.getElementById('fullPage').href = projectPath;
 }
 
 document.addEventListener("DOMContentLoaded", () => loadProject('../about'));
