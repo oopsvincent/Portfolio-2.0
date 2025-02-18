@@ -14,7 +14,7 @@ menuToggle.addEventListener("click", () => {
 });
 
 
-if (window.innerWidth <= 768) {
+if (window.innerWidth <= 1200) {
     navbar.addEventListener("click", () => {
         navbar.classList.toggle("active");
     })

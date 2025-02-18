@@ -76,7 +76,17 @@ body{
     border: 2px solid rgb(121, 195, 255);
 }
 
+.information{
+    text-align: center;
+}
 
+#next-btn{
+    padding: 20px;
+    background-color: lime;
+    border-radius: 12px;
+    border: none;
+    font-size: 1.5rem;
+}
 
 @media (max-width:768px) {
     #flag{

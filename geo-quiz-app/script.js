@@ -5,37 +5,49 @@ const usedNumbers = new Set();  // Track which country numbers have been used
 let correctAnswer = "";  // Store the correct answer
 let allCountryData = [];  // Store country data
 const app = document.getElementById('game');
+let totalScore;
+let currentScore = 0;
+let currentQuestionIndex;
 
 async function getDataWorld() {
-    const resource = await fetch('https://restcountries.com/v3.1/all?fields=name,flags');
+    usedNumbers.clear();
+    const resource = await fetch('https://restcountries.com/v3.1/all?fields=name,flags,population,capital,area');
     allCountryData = await resource.json();
     app.style.display = "flex"
     getData();
 }
 
 async function getDataEurope() {
-    const resource = await fetch('https://restcountries.com/v3.1/region/europe?fields=name,flags');
+    currentScore = 0;
+    usedNumbers.clear();
+    const resource = await fetch('https://restcountries.com/v3.1/region/europe?fields=name,flags,population,capital,area');
     allCountryData = await resource.json();
     app.style.display = "flex"
     getData();
 }
 
 async function getDataAsia() {
-    const resource = await fetch('https://restcountries.com/v3.1/region/asia?fields=name,flags');
+    currentScore = 0;
+    usedNumbers.clear();
+    const resource = await fetch('https://restcountries.com/v3.1/region/asia?fields=name,flags,population,capital,area');
     allCountryData = await resource.json();
     app.style.display = "flex"
     getData();
 }
 
-async function gerDataAfrica() {
-    const resource = await fetch('https://restcountries.com/v3.1/region/africa?fields=name,flags');
+async function getDataAfrica() {
+    currentScore = 0;
+    usedNumbers.clear();
+    const resource = await fetch('https://restcountries.com/v3.1/region/africa?fields=name,flags,population,capital,area');
     allCountryData = await resource.json();
     app.style.display = "flex"
     getData();
 }
 
 async function gerDataOceania() {
-    const resource = await fetch('https://restcountries.com/v3.1/region/oceania?fields=name,flags');
+    currentScore = 0;
+    usedNumbers.clear();
+    const resource = await fetch('https://restcountries.com/v3.1/region/oceania?fields=name,flags,population,capital,area');
     allCountryData = await resource.json();
     app.style.display = "flex"
     getData();
@@ -43,50 +55,74 @@ async function gerDataOceania() {
 
 
 async function getDataAmerica() {
-    const resource = await fetch('https://restcountries.com/v3.1/subregion/America?fields=name,flags');
+    currentScore = 0;
+    usedNumbers.clear();
+    const resource = await fetch('https://restcountries.com/v3.1/subregion/America?fields=name,flags,population,capital,area');
     allCountryData = await resource.json();
     app.style.display = "flex"
     getData();
 }
 
 async function getDataNAmerica() {
-    const resource = await fetch('https://restcountries.com/v3.1/subregion/North%20America?fields=name,flags');
+    currentScore = 0;
+    usedNumbers.clear();
+    const resource = await fetch('https://restcountries.com/v3.1/subregion/North%20America?fields=name,flags,population,capital,area');
     allCountryData = await resource.json();
     app.style.display = "flex"
     getData();
 }
 
 async function getDataCAmerica() {
-    const resource = await fetch('https://restcountries.com/v3.1/subregion/Central%20America?fields=name,flags');
+    currentScore = 0;
+    usedNumbers.clear();
+    const resource = await fetch('https://restcountries.com/v3.1/subregion/Central%20America?fields=name,flags,population,capital,area');
     allCountryData = await resource.json();
     app.style.display = "flex"
     getData();
 }
 
 async function getDataSAmerica() {
-    const resource = await fetch('https://restcountries.com/v3.1/subregion/South%20America?fields=name,flags');
+    currentScore = 0;
+    usedNumbers.clear();
+    const resource = await fetch('https://restcountries.com/v3.1/subregion/South%20America?fields=name,flags,population,capital,area');
     allCountryData = await resource.json();
     app.style.display = "flex"
     getData();
 }
 
-async function gerDataArctic() {
-        const resource = await fetch('https://restcountries.com/v3.1/region/arctic?fields=flags,name');
-        const data = await resource.json();
-        app.style.display = "flex";
-        getData();
+async function getDataArctic() {
+    currentScore = 0;
+    usedNumbers.clear();
+    const resource = await fetch('https://restcountries.com/v3.1/region/arctic?fields=name,flags,population,capital,area');
+    allCountryData = await resource.json();
+    app.style.display = "flex"
+    getData();
 }
 
-async function gerDataAntarctic() {
-        const resource = await fetch('https://restcountries.com/v3.1/region/antarctic?fields=flags,name');
-        const data = await resource.json();
-        app.style.display = "flex";
-        getData();
+async function getDataAntarctic() {
+    currentScore = 0;
+    usedNumbers.clear();
+    const resource = await fetch('https://restcountries.com/v3.1/region/antarctic?fields=name,flags,population,capital,area');
+    const data = await resource.json();
+    app.style.display = "flex";
+    getData();
 }
 
 
 async function getData() {
+    document.getElementById("next-btn")?.remove();
+    // let buttonCont = document.querySelectorAll('.answer-button');  // Fixed selector
+    buttons.forEach(button => button.style.display = "block");
 
+    document.getElementById('status').textContent = "";
+    document.getElementById('off-name').textContent = '';
+    document.getElementById('cap-city').textContent = '';
+    document.getElementById('population').textContent = '';
+    document.getElementById('area').textContent = '';
+
+    totalScore = allCountryData.length;
+    document.getElementById('score').innerHTML = `${currentScore} / ${totalScore}`;
+    
     // Reset when all countries have been used
     if (usedNumbers.size === allCountryData.length) {
         usedNumbers.clear();
@@ -98,6 +134,8 @@ async function getData() {
         rNumber = Math.floor(Math.random() * allCountryData.length);
     } while (usedNumbers.has(rNumber));  // Keep generating until we get an unused number
     
+currentQuestionIndex = rNumber;
+
     usedNumbers.add(rNumber);  // Add to used numbers
     
     const { name, flags } = allCountryData[rNumber];
@@ -111,7 +149,7 @@ async function getData() {
 function generateAnswerButtons(correctIndex) {
     const correctCountry = allCountryData[correctIndex];
     const incorrectAnswers = [];
-
+    
     // Randomly pick 5 incorrect answers from countries that aren't the correct one
     while (incorrectAnswers.length < 5) {
         const randomIndex = Math.floor(Math.random() * allCountryData.length);
@@ -119,11 +157,11 @@ function generateAnswerButtons(correctIndex) {
             incorrectAnswers.push(randomIndex);
         }
     }
-
+    
     // Shuffle the answers (one correct and 5 incorrect ones)
     const answers = [correctIndex, ...incorrectAnswers];
     shuffleArray(answers);  // Shuffle to randomize button positions
-
+    
     // Assign the country names to the buttons
     buttons.forEach((button, index) => {
         const country = allCountryData[answers[index]];
@@ -140,15 +178,46 @@ function shuffleArray(array) {
     }
 }
 
+
+
 // Check the answer when a button is clicked
 function checkAnswer(selectedAnswer) {
     if (selectedAnswer.toLowerCase() === correctAnswer) {
-        alert("Correct! 🎉 Moving to the next flag...");
-        getData();  // Load the next flag and answers
+        currentScore++;
+        document.getElementById('status').textContent = "Correct";
+        document.getElementById('off-name').textContent = `Official Name: ${allCountryData[currentQuestionIndex].name.official}`;
+        document.getElementById('cap-city').textContent = `Capital City: ${allCountryData[currentQuestionIndex].capital[0]}`
+        document.getElementById('population').textContent = `Total Population: ${allCountryData[currentQuestionIndex].population}`
+        document.getElementById('area').textContent = `Total Area: ${allCountryData[currentQuestionIndex].area} Km²`
+
+        document.getElementById('status').style.color = "lime";
+        document.getElementById('status').style.fontSize = "2rem";
+
+
+        // Hide all answer buttons
+        let buttonCont = document.querySelectorAll('.answer-button');  // Fixed selector
+        buttonCont.forEach(element => element.style.display = "none");
+
+        // Remove any existing "Continue" button to prevent duplication
+        let existingNextBtn = document.getElementById("next-btn");
+        if (existingNextBtn) {
+            existingNextBtn.remove();
+        }
+
+        // Create and append a new "Continue" button
+        const nextButton = document.createElement('button');
+        nextButton.id = "next-btn";
+        nextButton.textContent = "Continue";
+        document.getElementById('buttons-container').appendChild(nextButton);
+
+        nextButton.addEventListener("click", getData);
     } else {
-        alert("Wrong! Try again.");
+        document.getElementById('status').textContent = "Wrong!! Try Again";
+        document.getElementById('status').style.color = "red";
+        document.getElementById('status').style.fontSize = "2rem";
     }
 }
+
 
 document.getElementById('world').addEventListener("click", getDataWorld);
 document.getElementById('europe').addEventListener("click", getDataEurope);
@@ -158,6 +227,6 @@ document.getElementById('n-america').addEventListener("click", getDataNAmerica);
 document.getElementById('c-america').addEventListener("click", getDataCAmerica);
 document.getElementById('s-america').addEventListener("click", getDataSAmerica);
 document.getElementById('oceania').addEventListener("click", gerDataOceania);
-document.getElementById('africa').addEventListener("click", gerDataAfrica);
-document.getElementById('arctic').addEventListener("click", gerDataArctic);
-document.getElementById('antarctica').addEventListener("click", gerDataAntarctic);
+document.getElementById('africa').addEventListener("click", getDataAfrica);
+document.getElementById('arctic').addEventListener("click", getDataArctic);
+document.getElementById('antarctica').addEventListener("click", getDataAntarctic);

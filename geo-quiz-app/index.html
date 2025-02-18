@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Guess Country By Flag</h1>
+    <h1 style="text-align: center; font-size: 4rem;">Guess Country By Flag</h1>
     <div class="buttons">
         <button class="select-btn" id="world">World</button>
         <button class="select-btn" id="asia">Asia</button>
@@ -18,12 +18,20 @@
         <button class="select-btn" id="c-america">Central America</button>
         <button class="select-btn" id="s-america">South America</button>
         <button class="select-btn" id="oceania">Oceania</button>
-        <button class="select-btn" id="antarctica" disabled>Antarctica (Not Available due to some CORS issues)</button>
-        <button class="select-btn" id="arctic" disabled>Arctic (Not Available due to some CORS issues)</button>
+        <button class="select-btn" id="antarctica" disabled>Antarctica (NA CORS issues)</button>
+        <button class="select-btn" id="arctic" disabled>Arctic (NA CORS issues)</button>
     </div>
     <div class="game" id="game">
+            <h3 id="score"></h3>
             <img id="flag" src="" alt="Country Flag">
-        
+        <div class="information">
+            <h2 id="status"></h2>
+            <h2 id="off-name"></h2>
+            <h2 id="cap-city"></h2>
+            <h2 id="population"></h2>
+            <h2 id="area"></h2>
+        </div>
+
         <div id="buttons-container">
             <button class="answer-button" id="btn1"></button>
             <button class="answer-button" id="btn2"></button>
