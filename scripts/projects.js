@@ -1,6 +1,6 @@
 function loadProject(projectPath) {
     document.getElementById('project-frame').src = projectPath + "/index.html";
-    document.getElementById('fullPage').href = projectPath;
+    // document.getElementById('fullPage').href = projectPath;
 }
 
 document.addEventListener("DOMContentLoaded", () => loadProject('../about'));
@@ -19,3 +19,18 @@ if (window.innerWidth <= 768) {
         navbar.classList.toggle("active");
     })
 }
+
+const iframe = document.getElementById('project-frame');
+const button = document.getElementById('fullscreen-button');
+
+button.addEventListener('click', () => {
+  if (iframe.requestFullscreen) {
+    iframe.requestFullscreen();
+  } else if (iframe.mozRequestFullScreen) {
+    iframe.mozRequestFullScreen();
+  } else if (iframe.webkitRequestFullscreen) {
+    iframe.webkitRequestFullscreen();
+  } else if (iframe.msRequestFullscreen) {
+    iframe.msRequestFullscreen();
+  }
+});

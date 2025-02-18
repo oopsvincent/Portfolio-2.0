@@ -1,6 +1,3 @@
-const input = document.getElementById("input").value;
-
-
 const min = 1;
 const max = 100;
 const randomNumber = Math.floor(Math.random() * max + 1);
@@ -13,6 +10,7 @@ window.alert(`Guess a number between ${min} and ${max}`);
 while (isRunning) {
     let answer = window.prompt(`Guess the Number`);
     answer = Number(answer);
+    console.log(answer);
 
     if (answer == NaN) {
         window.alert("Enter a Valid Number");

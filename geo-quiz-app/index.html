@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geography quiz app</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Guess Country By Flag</h1>
+    <div class="buttons">
+        <button class="select-btn" id="world">World</button>
+        <button class="select-btn" id="asia">Asia</button>
+        <button class="select-btn" id="europe">Europe</button>
+        <button class="select-btn" id="africa">Africa</button>
+        <button class="select-btn" id="america">America</button>
+        <button class="select-btn" id="n-america">North America</button>
+        <button class="select-btn" id="c-america">Central America</button>
+        <button class="select-btn" id="s-america">South America</button>
+        <button class="select-btn" id="oceania">Oceania</button>
+        <button class="select-btn" id="antarctica" disabled>Antarctica (Not Available due to some CORS issues)</button>
+        <button class="select-btn" id="arctic" disabled>Arctic (Not Available due to some CORS issues)</button>
+    </div>
+    <div class="game" id="game">
+            <img id="flag" src="" alt="Country Flag">
+        
+        <div id="buttons-container">
+            <button class="answer-button" id="btn1"></button>
+            <button class="answer-button" id="btn2"></button>
+            <button class="answer-button" id="btn3"></button>
+            <button class="answer-button" id="btn4"></button>
+            <button class="answer-button" id="btn5"></button>
+            <button class="answer-button" id="btn6"></button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
