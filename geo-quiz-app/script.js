@@ -102,7 +102,7 @@ async function getDataArctic() {
 async function getDataAntarctic() {
     currentScore = 0;
     usedNumbers.clear();
-    const resource = await fetch('https://restcountries.com/v3.1/region/antarctic?fields=name,flags,population,capital,area');
+    const resource = await fetch('https://restcountries.com/v3.1/region/antarctic?fields=flags,name');
     const data = await resource.json();
     app.style.display = "flex";
     getData();
@@ -110,6 +110,9 @@ async function getDataAntarctic() {
 
 
 async function getData() {
+    document.getElementById('head-1').style.display = "none";
+    document.getElementById('head-2').style.display = "none";
+    document.getElementById('buttons-home').style.display = "none";
     document.getElementById("next-btn")?.remove();
     // let buttonCont = document.querySelectorAll('.answer-button');  // Fixed selector
     buttons.forEach(button => button.style.display = "block");
@@ -230,3 +233,7 @@ document.getElementById('oceania').addEventListener("click", gerDataOceania);
 document.getElementById('africa').addEventListener("click", getDataAfrica);
 document.getElementById('arctic').addEventListener("click", getDataArctic);
 document.getElementById('antarctica').addEventListener("click", getDataAntarctic);
+
+document.getElementById('change-region').addEventListener('click', () => {
+    document.getElementById('buttons-home').style.display = "flex";
+})

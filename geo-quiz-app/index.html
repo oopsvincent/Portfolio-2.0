@@ -7,8 +7,9 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1 style="text-align: center; font-size: 4rem;">Guess Country By Flag</h1>
-    <div class="buttons">
+    <h1 id="head-1" style="text-align: center; font-size: 3rem; margin-bottom: 0px; margin-top: 10px;">Guess Country By Flag</h1>
+    <h2 id="head-2" style="text-align: center; margin: 0px auto; color: rgb(80, 80, 80);">Select Region</h2>
+    <div class="buttons" id="buttons-home">
         <button class="select-btn" id="world">World</button>
         <button class="select-btn" id="asia">Asia</button>
         <button class="select-btn" id="europe">Europe</button>
@@ -18,10 +19,11 @@
         <button class="select-btn" id="c-america">Central America</button>
         <button class="select-btn" id="s-america">South America</button>
         <button class="select-btn" id="oceania">Oceania</button>
-        <button class="select-btn" id="antarctica" disabled>Antarctica (NA CORS issues)</button>
-        <button class="select-btn" id="arctic" disabled>Arctic (NA CORS issues)</button>
+        <button class="select-btn" id="antarctica" disabled>Antarctica (NA)</button>
+        <button class="select-btn" id="arctic" disabled>Arctic (NA)</button>
     </div>
     <div class="game" id="game">
+        <div id="b-home"><button id="change-region">Change Region</button></div>
             <h3 id="score"></h3>
             <img id="flag" src="" alt="Country Flag">
         <div class="information">
