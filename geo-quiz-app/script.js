@@ -6,48 +6,49 @@ let correctAnswer = "";  // Store the correct answer
 let allCountryData = [];  // Store country data
 const app = document.getElementById('game');
 let totalScore;
-let currentScore = 0;
+let currentScore = 1;
 let currentQuestionIndex;
 
 async function getDataWorld() {
+    currentScore = 1;
     usedNumbers.clear();
-    const resource = await fetch('https://restcountries.com/v3.1/all?fields=name,flags,population,capital,area');
+    const resource = await fetch('https://restcountries.com/v3.1/all?fields=name,flags,population,capital,area,currencies');
     allCountryData = await resource.json();
     app.style.display = "flex"
     getData();
 }
 
 async function getDataEurope() {
-    currentScore = 0;
+    currentScore = 1;
     usedNumbers.clear();
-    const resource = await fetch('https://restcountries.com/v3.1/region/europe?fields=name,flags,population,capital,area');
+    const resource = await fetch('https://restcountries.com/v3.1/region/europe?fields=name,flags,population,capital,area,currencies');
     allCountryData = await resource.json();
     app.style.display = "flex"
     getData();
 }
 
 async function getDataAsia() {
-    currentScore = 0;
+    currentScore = 1;
     usedNumbers.clear();
-    const resource = await fetch('https://restcountries.com/v3.1/region/asia?fields=name,flags,population,capital,area');
+    const resource = await fetch('https://restcountries.com/v3.1/region/asia?fields=name,flags,population,capital,area,currencies');
     allCountryData = await resource.json();
     app.style.display = "flex"
     getData();
 }
 
 async function getDataAfrica() {
-    currentScore = 0;
+    currentScore = 1;
     usedNumbers.clear();
-    const resource = await fetch('https://restcountries.com/v3.1/region/africa?fields=name,flags,population,capital,area');
+    const resource = await fetch('https://restcountries.com/v3.1/region/africa?fields=name,flags,population,capital,area,currencies');
     allCountryData = await resource.json();
     app.style.display = "flex"
     getData();
 }
 
 async function gerDataOceania() {
-    currentScore = 0;
+    currentScore = 1;
     usedNumbers.clear();
-    const resource = await fetch('https://restcountries.com/v3.1/region/oceania?fields=name,flags,population,capital,area');
+    const resource = await fetch('https://restcountries.com/v3.1/region/oceania?fields=name,flags,population,capital,area,currencies');
     allCountryData = await resource.json();
     app.style.display = "flex"
     getData();
@@ -55,52 +56,52 @@ async function gerDataOceania() {
 
 
 async function getDataAmerica() {
-    currentScore = 0;
+    currentScore = 1;
     usedNumbers.clear();
-    const resource = await fetch('https://restcountries.com/v3.1/subregion/America?fields=name,flags,population,capital,area');
+    const resource = await fetch('https://restcountries.com/v3.1/subregion/America?fields=name,flags,population,capital,area,currencies');
     allCountryData = await resource.json();
     app.style.display = "flex"
     getData();
 }
 
 async function getDataNAmerica() {
-    currentScore = 0;
+    currentScore = 1;
     usedNumbers.clear();
-    const resource = await fetch('https://restcountries.com/v3.1/subregion/North%20America?fields=name,flags,population,capital,area');
+    const resource = await fetch('https://restcountries.com/v3.1/subregion/North%20America?fields=name,flags,population,capital,area,currencies');
     allCountryData = await resource.json();
     app.style.display = "flex"
     getData();
 }
 
 async function getDataCAmerica() {
-    currentScore = 0;
+    currentScore = 1;
     usedNumbers.clear();
-    const resource = await fetch('https://restcountries.com/v3.1/subregion/Central%20America?fields=name,flags,population,capital,area');
+    const resource = await fetch('https://restcountries.com/v3.1/subregion/Central%20America?fields=name,flags,population,capital,area,currencies');
     allCountryData = await resource.json();
     app.style.display = "flex"
     getData();
 }
 
 async function getDataSAmerica() {
-    currentScore = 0;
+    currentScore = 1;
     usedNumbers.clear();
-    const resource = await fetch('https://restcountries.com/v3.1/subregion/South%20America?fields=name,flags,population,capital,area');
+    const resource = await fetch('https://restcountries.com/v3.1/subregion/South%20America?fields=name,flags,population,capital,area,currencies');
     allCountryData = await resource.json();
     app.style.display = "flex"
     getData();
 }
 
 async function getDataArctic() {
-    currentScore = 0;
+    currentScore = 1;
     usedNumbers.clear();
-    const resource = await fetch('https://restcountries.com/v3.1/region/arctic?fields=name,flags,population,capital,area');
+    const resource = await fetch('https://restcountries.com/v3.1/region/arctic?fields=name,flags,population,capital,area,currencies');
     allCountryData = await resource.json();
     app.style.display = "flex"
     getData();
 }
 
 async function getDataAntarctic() {
-    currentScore = 0;
+    currentScore = 1;
     usedNumbers.clear();
     const resource = await fetch('https://restcountries.com/v3.1/region/antarctic?fields=flags,name');
     const data = await resource.json();
@@ -110,6 +111,9 @@ async function getDataAntarctic() {
 
 
 async function getData() {
+    document.querySelectorAll('.sp-in').forEach(element => element.style.display = "none");
+    document.getElementById('game').style.display = "flex";
+    document.getElementById('change-region').style.display = "flex";
     document.getElementById('head-1').style.display = "none";
     document.getElementById('head-2').style.display = "none";
     document.getElementById('buttons-home').style.display = "none";
@@ -187,11 +191,17 @@ function shuffleArray(array) {
 function checkAnswer(selectedAnswer) {
     if (selectedAnswer.toLowerCase() === correctAnswer) {
         currentScore++;
+        document.querySelectorAll('.sp-in').forEach(element => element.style.display = "flex");
         document.getElementById('status').textContent = "Correct";
-        document.getElementById('off-name').textContent = `Official Name: ${allCountryData[currentQuestionIndex].name.official}`;
-        document.getElementById('cap-city').textContent = `Capital City: ${allCountryData[currentQuestionIndex].capital[0]}`
-        document.getElementById('population').textContent = `Total Population: ${allCountryData[currentQuestionIndex].population}`
-        document.getElementById('area').textContent = `Total Area: ${allCountryData[currentQuestionIndex].area} Km²`
+        document.getElementById('off-name').textContent = `${allCountryData[currentQuestionIndex].name.official}`;
+        document.getElementById('cap-city').textContent = `${allCountryData[currentQuestionIndex].capital[0]}`;
+        const country = allCountryData[currentQuestionIndex]; // Example: Norway
+        const currencyKey = Object.keys(country.currencies)[0]; // Get the first currency key (e.g., "NOK")
+        const currencyName = country.currencies[currencyKey].name;
+        const currencySymbool = country.currencies[currencyKey].symbol;
+        document.getElementById('currency').textContent = `${currencySymbool} ${currencyName}`;
+        document.getElementById('population').textContent = `${allCountryData[currentQuestionIndex].population}`;
+        document.getElementById('area').textContent = `${allCountryData[currentQuestionIndex].area} Km²`
 
         document.getElementById('status').style.color = "lime";
         document.getElementById('status').style.fontSize = "2rem";
@@ -222,18 +232,21 @@ function checkAnswer(selectedAnswer) {
 }
 
 
-document.getElementById('world').addEventListener("click", getDataWorld);
-document.getElementById('europe').addEventListener("click", getDataEurope);
-document.getElementById('asia').addEventListener("click", getDataAsia);
-document.getElementById('america').addEventListener("click", getDataAmerica);
-document.getElementById('n-america').addEventListener("click", getDataNAmerica);
-document.getElementById('c-america').addEventListener("click", getDataCAmerica);
-document.getElementById('s-america').addEventListener("click", getDataSAmerica);
-document.getElementById('oceania').addEventListener("click", gerDataOceania);
-document.getElementById('africa').addEventListener("click", getDataAfrica);
-document.getElementById('arctic').addEventListener("click", getDataArctic);
-document.getElementById('antarctica').addEventListener("click", getDataAntarctic);
+// NO NEED BECAUSE USING ONCLICK
+// document.getElementById('world').addEventListener("click", getDataWorld);
+// document.getElementById('europe').addEventListener("click", getDataEurope);
+// document.getElementById('asia').addEventListener("click", getDataAsia);
+// document.getElementById('america').addEventListener("click", getDataAmerica);
+// document.getElementById('n-america').addEventListener("click", getDataNAmerica);
+// document.getElementById('c-america').addEventListener("click", getDataCAmerica);
+// document.getElementById('s-america').addEventListener("click", getDataSAmerica);
+// document.getElementById('oceania').addEventListener("click", gerDataOceania);
+// document.getElementById('africa').addEventListener("click", getDataAfrica);
+// document.getElementById('arctic').addEventListener("click", getDataArctic);
+// document.getElementById('antarctica').addEventListener("click", getDataAntarctic);
 
 document.getElementById('change-region').addEventListener('click', () => {
     document.getElementById('buttons-home').style.display = "flex";
-})
+    document.getElementById('change-region').style.display = "none";
+    document.getElementById('game').style.display = "none";
+});

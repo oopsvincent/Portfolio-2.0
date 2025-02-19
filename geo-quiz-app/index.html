@@ -10,28 +10,29 @@
     <h1 id="head-1" style="text-align: center; font-size: 3rem; margin-bottom: 0px; margin-top: 10px;">Guess Country By Flag</h1>
     <h2 id="head-2" style="text-align: center; margin: 0px auto; color: rgb(80, 80, 80);">Select Region</h2>
     <div class="buttons" id="buttons-home">
-        <button class="select-btn" id="world">World</button>
-        <button class="select-btn" id="asia">Asia</button>
-        <button class="select-btn" id="europe">Europe</button>
-        <button class="select-btn" id="africa">Africa</button>
-        <button class="select-btn" id="america">America</button>
-        <button class="select-btn" id="n-america">North America</button>
-        <button class="select-btn" id="c-america">Central America</button>
-        <button class="select-btn" id="s-america">South America</button>
-        <button class="select-btn" id="oceania">Oceania</button>
+        <button class="select-btn" onclick="getDataWorld()" id="world">World</button>
+        <button class="select-btn" onclick="getDataAsia()" id="asia">Asia</button>
+        <button class="select-btn" onclick="getDataEurope()" id="europe">Europe</button>
+        <button class="select-btn" onclick="getDataAfrica()" id="africa">Africa</button>
+        <button class="select-btn" onclick="getDataAmerica()" id="america">America</button>
+        <button class="select-btn" onclick="getDataNAmerica()" id="n-america">North America</button>
+        <button class="select-btn" onclick="getDataCAmerica()" id="c-america">Central America</button>
+        <button class="select-btn" onclick="getDataSAmerica()" id="s-america">South America</button>
+        <button class="select-btn" onclick="getDataOceania()" id="oceania">Oceania</button>
         <button class="select-btn" id="antarctica" disabled>Antarctica (NA)</button>
         <button class="select-btn" id="arctic" disabled>Arctic (NA)</button>
     </div>
     <div class="game" id="game">
-        <div id="b-home"><button id="change-region">Change Region</button></div>
+        <div id="b-home"><button id="change-region"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M646-39 203-480l443-442 109 110-332 332 332 332L646-39Z"/></svg></button></div>
             <h3 id="score"></h3>
-            <img id="flag" src="" alt="Country Flag">
+            <img id="flag" src="https://placehold.co/600x300?text=loading..." alt="Country Flag">
         <div class="information">
             <h2 id="status"></h2>
-            <h2 id="off-name"></h2>
-            <h2 id="cap-city"></h2>
-            <h2 id="population"></h2>
-            <h2 id="area"></h2>
+            <span class="sp-in">Official Name: <h2 id="off-name"></h2></span>
+            <span class="sp-in">Capital: <h2 id="cap-city"></h2></span>
+            <span class="sp-in">Currency: <h2 id="currency"></h2></span>
+            <span class="sp-in">Population: <h2 id="population"></h2></span>
+            <span class="sp-in">Total area: <h2 id="area"></h2></span>
         </div>
 
         <div id="buttons-container">
