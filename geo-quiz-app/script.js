@@ -134,6 +134,7 @@ async function getData() {
     if (usedNumbers.size === allCountryData.length) {
         usedNumbers.clear();
         alert("All countries have been answered! Resetting...");
+        currentScore = 0;
     }
     
     let rNumber;

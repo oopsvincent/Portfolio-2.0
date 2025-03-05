@@ -10,6 +10,7 @@ html::-webkit-scrollbar{
 
 body{
     background: rgb(56, 56, 56);
+    color: white;
 }
 
 header{
@@ -29,7 +30,8 @@ html::-webkit-scrollbar-track{
     margin: 252px 5px;
 }
 body{
-  background: var(--bg-main);
+  background: rgb(37, 36, 36);
+  overflow-y: scroll;
 }
 .hero{
     display: flex;
@@ -37,8 +39,36 @@ body{
     align-items: center;
     height: 100vh;
     background: var(--bg-hero);
-    color: var(--text-hero);
+    color: white;
     font-family: "Host Grotesk";
+    /* animation: topCorner;
+    animation-timeline: view(); */
+}
+
+#projects{
+    width: 80vw;
+    margin: 50px auto;
+    padding: 25px;
+    box-shadow: 2px 2px 10px white;
+    border-radius: 25px;
+    background: rgba(252, 252, 252, 0.295);
+    & > h1{
+        font-size: 72px;
+    }
+    & > h3{
+        font-size: 38px;
+    }
+    & > a{
+        color: white;
+        font-size: 42px;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        &:hover{
+            text-shadow: 2px 12px 25px white;
+        }
+    }
 }
 
 /* a:hover{
@@ -120,6 +150,8 @@ h3 code{
     transform: translateY(23px);
 }
 
+
+
 .javasc-fr .logo:nth-child(2) img{
     transform: translateY(25px);
     animation: spin 120s infinite;
@@ -166,8 +198,18 @@ h3 code{
     text-shadow: 22px 25px 1px rgba(176, 224, 230, 0.568);
     display: flex;
     top: 75px;
-    right: -45px;
+    right: -85px;
     font-size: 4rem;
+}
+
+.logo:nth-child(3):hover .s-names:nth-child(2){
+    color: rgba(0, 0, 0, 0.795);
+    text-shadow: 22px 25px 1px rgba(176, 224, 230, 0.568);
+    display: flex;
+    top: 95px;
+    left: 5px;
+    font-size: 4rem;
+
 }
 
 .logo:nth-child(2){
@@ -206,7 +248,7 @@ h3 code{
             width: 280px;
             &.logo img{
                 transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
-                transform: translateX(50px);
+                transform: translateX(-90px);
             }
         }
     }
@@ -226,6 +268,36 @@ h3 code{
         transform:  rotate3d(228, 53, 89, -23deg);
     }
 } */
+
+.javasc-fr .logo:nth-child(1):hover{
+    transform: translate(-150px, -90px);
+}
+.javasc-fr .logo:nth-child(2):hover{
+    transform: translate(-150px, -90px);
+}
+
+.javasc-fr .logo:nth-child(1) .s-names{
+    transform: rotate(350deg);
+    position: absolute;
+    left: 90px;
+    top: 130px;
+}
+.javasc-fr .logo:nth-child(2) .s-names{
+    transform: rotate(350deg);
+    position: absolute;
+    left: 90px;
+    top: 130px;
+}
+
+@keyframes topCorner {
+    from{
+        transform: translate(0px, 0px);
+    }
+    
+    to{        
+        transform: translate(-20vw, -20vh);
+    }
+}
 
 @keyframes spin {
     0%{
@@ -283,12 +355,13 @@ h3 code{
 }
 
 .notice{
+    margin: 50px;
+    margin-top: 200px;
     font-family: 'Poppins';
     font-size: 24px;
     padding: 52px;
     border-left: 2px solid cyan;
     outline: 10px solid rgb(0, 0, 0);
-    margin: 50px;
     border-radius: 15px;
     background: linear-gradient(to right, rgb(196, 196, 196), rgb(99, 99, 99));
 }

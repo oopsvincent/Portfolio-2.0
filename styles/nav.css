@@ -119,3 +119,7 @@ nav .home-link{
   /* cursor: url('../mouse-hand.png'), auto; */
 }
 }
+
+a:hover{
+    cursor: pointer;
+}
