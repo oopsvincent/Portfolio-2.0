@@ -9,6 +9,8 @@ let totalScore;
 let currentScore = 1;
 let currentQuestionIndex;
 
+
+
 async function getDataWorld() {
     currentScore = 1;
     usedNumbers.clear();
@@ -40,7 +42,7 @@ async function getDataAfrica() {
     currentScore = 1;
     usedNumbers.clear();
     const resource = await fetch('https://restcountries.com/v3.1/region/africa?fields=name,flags,population,capital,area,currencies');
-    allCountryData = await resource.json();
+    CountryData = await resource.json();
     app.style.display = "flex"
     getData();
 }
@@ -49,7 +51,7 @@ async function gerDataOceania() {
     currentScore = 1;
     usedNumbers.clear();
     const resource = await fetch('https://restcountries.com/v3.1/region/oceania?fields=name,flags,population,capital,area,currencies');
-    allCountryData = await resource.json();
+    CountryData = await resource.json();
     app.style.display = "flex"
     getData();
 }
@@ -59,7 +61,7 @@ async function getDataAmerica() {
     currentScore = 1;
     usedNumbers.clear();
     const resource = await fetch('https://restcountries.com/v3.1/subregion/America?fields=name,flags,population,capital,area,currencies');
-    allCountryData = await resource.json();
+    CountryData = await resource.json();
     app.style.display = "flex"
     getData();
 }
@@ -68,7 +70,7 @@ async function getDataNAmerica() {
     currentScore = 1;
     usedNumbers.clear();
     const resource = await fetch('https://restcountries.com/v3.1/subregion/North%20America?fields=name,flags,population,capital,area,currencies');
-    allCountryData = await resource.json();
+    CountryData = await resource.json();
     app.style.display = "flex"
     getData();
 }
@@ -77,7 +79,7 @@ async function getDataCAmerica() {
     currentScore = 1;
     usedNumbers.clear();
     const resource = await fetch('https://restcountries.com/v3.1/subregion/Central%20America?fields=name,flags,population,capital,area,currencies');
-    allCountryData = await resource.json();
+    CountryData = await resource.json();
     app.style.display = "flex"
     getData();
 }
@@ -86,7 +88,7 @@ async function getDataSAmerica() {
     currentScore = 1;
     usedNumbers.clear();
     const resource = await fetch('https://restcountries.com/v3.1/subregion/South%20America?fields=name,flags,population,capital,area,currencies');
-    allCountryData = await resource.json();
+    CountryData = await resource.json();
     app.style.display = "flex"
     getData();
 }
@@ -95,7 +97,7 @@ async function getDataArctic() {
     currentScore = 1;
     usedNumbers.clear();
     const resource = await fetch('https://restcountries.com/v3.1/region/arctic?fields=name,flags,population,capital,area,currencies');
-    allCountryData = await resource.json();
+    CountryData = await resource.json();
     app.style.display = "flex"
     getData();
 }
@@ -111,14 +113,14 @@ async function getDataAntarctic() {
 
 
 async function getData() {
-    document.querySelectorAll('.sp-in').forEach(element => element.style.display = "none");
+    document.querySelector('.sp-in').forEach(element => element.style.display = "none");
     document.getElementById('game').style.display = "flex";
     document.getElementById('change-region').style.display = "flex";
     document.getElementById('head-1').style.display = "none";
     document.getElementById('head-2').style.display = "none";
     document.getElementById('buttons-home').style.display = "none";
     document.getElementById("next-btn")?.remove();
-    // let buttonCont = document.querySelectorAll('.answer-button');  // Fixed selector
+    // let buttonCont = document.querySelector('.answer-button');  // Fixed selector
     buttons.forEach(button => button.style.display = "block");
 
     document.getElementById('status').textContent = "";
@@ -127,14 +129,15 @@ async function getData() {
     document.getElementById('population').textContent = '';
     document.getElementById('area').textContent = '';
 
-    totalScore = allCountryData.length;
+    totalScore = CountryData.length;
     document.getElementById('score').innerHTML = `${currentScore} / ${totalScore}`;
     
     // Reset when all countries have been used
     if (usedNumbers.size === allCountryData.length) {
         usedNumbers.clear();
-        alert("All countries have been answered! Resetting...");
         currentScore = 0;
+        alert("All countries have been answered! Resetting...");
+        
     }
     
     let rNumber;
